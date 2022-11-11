@@ -1,0 +1,16 @@
+/* Override junk from base stylesheet */
+.CodeMirror {
+  max-height: none !important;
+}
+.CodeMirror-scroll {
+  max-height: none !important;
+}
+
+#code-input {
+  display: none;
+}
+
+.capture-function-defn {
+  font-size: 18px;
+  color: blue !important;
+}
