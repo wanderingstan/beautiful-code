@@ -1,3 +1,5 @@
+FORMAT_QUERY = `
+
 ; Source: https://github.com/tree-sitter/tree-sitter-javascript/blob/master/queries/highlights.scm
 
 ((identifier) @constructor
@@ -85,8 +87,9 @@
 ;-------
 
 (template_substitution
-  "${" @punctuation.special
-  "}" @punctuation.special) @embedded
+  "$\{" @punctuation.special
+  "\}" @punctuation.special) @embedded
+
 
 [
   "("
@@ -98,126 +101,10 @@
 ]  @punctuation-bracket
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-; STAN: Beyond here seems to break things
-
 [
-  ";"
-  (optional_chain)
-  "."
-  ","
-] @punctuation.delimiter
-
-[
-  "-"
-  "--"
-  "-="
-  "+"
-  "++"
-  "+="
-  "*"
-  "*="
-  "**"
-  "**="
-  "/"
-  "/="
-  "%"
-  "%="
-  "<"
-  "<="
-  "<<"
-  "<<="
-  "="
-  "=="
-  "==="
-  "!"
-  "!="
-  "!=="
-  "=>"
-  ">"
-  ">="
-  ">>"
-  ">>="
-  ">>>"
-  ">>>="
-  "~"
-  "^"
-  "&"
-  "|"
-  "^="
-  "&="
-  "|="
-  "&&"
-  "||"
-  "??"
-  "&&="
-  "||="
-  "??="
-] @operator
-
-[
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
-]  @punctuation.bracket
-
-[
-  "as"
   "async"
-  "await"
-  "break"
-  "case"
-  "catch"
-  "class"
-  "const"
-  "continue"
-  "debugger"
-  "default"
-  "delete"
-  "do"
-  "else"
-  "export"
-  "extends"
-  "finally"
-  "for"
-  "from"
   "function"
-  "get"
-  "if"
-  "import"
-  "in"
-  "instanceof"
-  "let"
-  "new"
-  "of"
-  "return"
-  "set"
-  "static"
-  "switch"
-  "target"
-  "throw"
-  "try"
-  "typeof"
-  "var"
-  "void"
-  "while"
-  "with"
-  "yield"
-] @keyword
+] @function-keyword
+
+
+`;

@@ -3,33 +3,35 @@ let tree;
 (async () => {
   const CAPTURE_REGEX = /@\s*([\w\._-]+)/g;
   const COLORS_BY_INDEX = [
-    'blue',
-    'chocolate',
-    'darkblue',
-    'darkcyan',
-    'darkgreen',
-    'darkred',
-    'darkslategray',
-    'dimgray',
-    'green',
-    'indigo',
-    'navy',
-    'red',
-    'sienna',
+    "blue",
+    "chocolate",
+    "darkblue",
+    "darkcyan",
+    "darkgreen",
+    "darkred",
+    "darkslategray",
+    "dimgray",
+    "green",
+    "indigo",
+    "navy",
+    "red",
+    "sienna",
   ];
 
-  const scriptURL = document.currentScript.getAttribute('src');
+  const scriptURL = document.currentScript.getAttribute("src");
 
-  const codeInput = document.getElementById('code-input');
-  const languageSelect = document.getElementById('language-select');
-  const loggingCheckbox = document.getElementById('logging-checkbox');
-  const outputContainer = document.getElementById('output-container');
-  const outputContainerScroll = document.getElementById('output-container-scroll');
-  const playgroundContainer = document.getElementById('playground-container');
-  const queryCheckbox = document.getElementById('query-checkbox');
-  const queryContainer = document.getElementById('query-container');
-  const queryInput = document.getElementById('query-input');
-  const updateTimeSpan = document.getElementById('update-time');
+  const codeInput = document.getElementById("code-input");
+  const languageSelect = document.getElementById("language-select");
+  const loggingCheckbox = document.getElementById("logging-checkbox");
+  const outputContainer = document.getElementById("output-container");
+  const outputContainerScroll = document.getElementById(
+    "output-container-scroll"
+  );
+  const playgroundContainer = document.getElementById("playground-container");
+  const queryCheckbox = document.getElementById("query-checkbox");
+  const queryContainer = document.getElementById("query-container");
+  const queryInput = document.getElementById("query-input");
+  const updateTimeSpan = document.getElementById("update-time");
   const languagesByName = {};
 
   loadState();
@@ -38,20 +40,23 @@ let tree;
 
   const parser = new TreeSitter();
   const codeEditor = CodeMirror.fromTextArea(codeInput, {
-    lineNumbers: true,
-    showCursorWhenSelecting: true
+    // lineNumbers: true,
+    lineNumbers: false,
+    showCursorWhenSelecting: true,
   });
+  codeEditor.setSize("100%", "1000px");
 
   const queryEditor = CodeMirror.fromTextArea(queryInput, {
-    lineNumbers: true,
-    showCursorWhenSelecting: true
+    // lineNumbers: true,
+    lineNumbers: false,
+    showCursorWhenSelecting: true,
   });
 
   const cluster = new Clusterize({
     rows: [],
     noDataText: null,
     contentElem: outputContainer,
-    scrollElem: outputContainerScroll
+    scrollElem: outputContainerScroll,
   });
   const renderTreeOnCodeChange = debounce(renderTree, 50);
   const saveStateOnChange = debounce(saveState, 2000);
@@ -64,32 +69,32 @@ let tree;
   let isRendering = 0;
   let query;
 
-  codeEditor.on('changes', handleCodeChange);
-  codeEditor.on('viewportChange', runTreeQueryOnChange);
-  codeEditor.on('cursorActivity', debounce(handleCursorMovement, 150));
-  queryEditor.on('changes', debounce(handleQueryChange, 150));
+  codeEditor.on("changes", handleCodeChange);
+  codeEditor.on("viewportChange", runTreeQueryOnChange);
+  codeEditor.on("cursorActivity", debounce(handleCursorMovement, 150));
+  queryEditor.on("changes", debounce(handleQueryChange, 150));
 
-  loggingCheckbox.addEventListener('change', handleLoggingChange);
-  queryCheckbox.addEventListener('change', handleQueryEnableChange);
-  languageSelect.addEventListener('change', handleLanguageChange);
-  outputContainer.addEventListener('click', handleTreeClick);
+  loggingCheckbox.addEventListener("change", handleLoggingChange);
+  queryCheckbox.addEventListener("change", handleQueryEnableChange);
+  languageSelect.addEventListener("change", handleLanguageChange);
+  outputContainer.addEventListener("click", handleTreeClick);
 
   handleQueryEnableChange();
-  await handleLanguageChange()
+  await handleLanguageChange();
 
-  playgroundContainer.style.visibility = 'visible';
+  playgroundContainer.style.visibility = "visible";
 
   async function handleLanguageChange() {
     const newLanguageName = languageSelect.value;
     if (!languagesByName[newLanguageName]) {
-      const url = `${LANGUAGE_BASE_URL}/tree-sitter-${newLanguageName}.wasm`
+      const url = `${LANGUAGE_BASE_URL}/tree-sitter-${newLanguageName}.wasm`;
       languageSelect.disabled = true;
       try {
         languagesByName[newLanguageName] = await TreeSitter.Language.load(url);
       } catch (e) {
         console.error(e);
         languageSelect.value = languageName;
-        return
+        return;
       } finally {
         languageSelect.disabled = false;
       }
@@ -103,7 +108,7 @@ let tree;
   }
 
   async function handleCodeChange(editor, changes) {
-    const newText = codeEditor.getValue() + '\n';
+    const newText = codeEditor.getValue() + "\n";
     const edits = tree && changes && changes.map(treeEditForEditorChange);
 
     const start = performance.now();
@@ -129,15 +134,15 @@ let tree;
     const cursor = tree.walk();
 
     let currentRenderCount = parseCount;
-    let row = '';
+    let row = "";
     let rows = [];
     let finishedRow = false;
     let visitedChildren = false;
     let indentLevel = 0;
 
-    for (let i = 0;; i++) {
+    for (let i = 0; ; i++) {
       if (i > 0 && i % 10000 === 0) {
-        await new Promise(r => setTimeout(r, 0));
+        await new Promise((r) => setTimeout(r, 0));
         if (parseCount !== currentRenderCount) {
           cursor.delete();
           isRendering--;
@@ -147,7 +152,7 @@ let tree;
 
       let displayName;
       if (cursor.nodeIsMissing) {
-        displayName = `MISSING ${cursor.nodeType}`
+        displayName = `MISSING ${cursor.nodeType}`;
       } else if (cursor.nodeIsNamed) {
         displayName = cursor.nodeType;
       }
@@ -168,7 +173,7 @@ let tree;
       } else {
         if (displayName) {
           if (finishedRow) {
-            row += '</div>';
+            row += "</div>";
             rows.push(row);
             finishedRow = false;
           }
@@ -177,11 +182,17 @@ let tree;
           const id = cursor.nodeId;
           let fieldName = cursor.currentFieldName();
           if (fieldName) {
-            fieldName += ': ';
+            fieldName += ": ";
           } else {
-            fieldName = '';
+            fieldName = "";
           }
-          row = `<div>${'  '.repeat(indentLevel)}${fieldName}<a class='plain' href="#" data-id=${id} data-range="${start.row},${start.column},${end.row},${end.column}">${displayName}</a> [${start.row}, ${start.column}] - [${end.row}, ${end.column}]`;
+          row = `<div>${"  ".repeat(
+            indentLevel
+          )}${fieldName}<a class='plain' href="#" data-id=${id} data-range="${
+            start.row
+          },${start.column},${end.row},${end.column}">${displayName}</a> [${
+            start.row
+          }, ${start.column}] - [${end.row}, ${end.column}]`;
           finishedRow = true;
         }
 
@@ -194,7 +205,7 @@ let tree;
       }
     }
     if (finishedRow) {
-      row += '</div>';
+      row += "</div>";
       rows.push(row);
     }
 
@@ -214,26 +225,28 @@ let tree;
 
     codeEditor.operation(() => {
       const marks = codeEditor.getAllMarks();
-      marks.forEach(m => m.clear());
+      marks.forEach((m) => m.clear());
 
       if (tree && query) {
         const captures = query.captures(
           tree.rootNode,
-          {row: startRow, column: 0},
-          {row: endRow, column: 0},
+          { row: startRow, column: 0 },
+          { row: endRow, column: 0 }
         );
         let lastNodeId;
-        for (const {name, node} of captures) {
+        for (const { name, node } of captures) {
           if (node.id === lastNodeId) continue;
           lastNodeId = node.id;
-          const {startPosition, endPosition} = node;
+          const { startPosition, endPosition } = node;
           codeEditor.markText(
-            {line: startPosition.row, ch: startPosition.column},
-            {line: endPosition.row, ch: endPosition.column},
+            { line: startPosition.row, ch: startPosition.column },
+            { line: endPosition.row, ch: endPosition.column },
             {
               inclusiveLeft: true,
               inclusiveRight: true,
-              css: `color: ${colorForCaptureName(name)}`
+              css: `color: ${colorForCaptureName(name)}`,
+              // css: `font-size: 18px; font-weight:bold; -webkit-transform:scale(1,2); display: inline-block; `,
+              className: `capture-${name}`,
             }
           );
         }
@@ -249,10 +262,12 @@ let tree;
     }
 
     queryEditor.operation(() => {
-      queryEditor.getAllMarks().forEach(m => m.clear());
-      if (!queryCheckbox.checked) return;
+      queryEditor.getAllMarks().forEach((m) => m.clear());
+      // if (!queryCheckbox.checked) return;
 
-      const queryText = queryEditor.getValue();
+      const queryText = queryEditor.getValue()
+        ? queryEditor.getValue()
+        : FORMAT_QUERY; // STAN
 
       try {
         query = parser.getLanguage().query(queryText);
@@ -260,14 +275,14 @@ let tree;
 
         let row = 0;
         queryEditor.eachLine((line) => {
-          while (match = CAPTURE_REGEX.exec(line.text)) {
+          while ((match = CAPTURE_REGEX.exec(line.text))) {
             queryEditor.markText(
-              {line: row, ch: match.index},
-              {line: row, ch: match.index + match[0].length},
+              { line: row, ch: match.index },
+              { line: row, ch: match.index + match[0].length },
               {
                 inclusiveLeft: true,
                 inclusiveRight: true,
-                css: `color: ${colorForCaptureName(match[1])}`
+                css: `color: ${colorForCaptureName(match[1])}`,
               }
             );
           }
@@ -277,7 +292,7 @@ let tree;
         const startPosition = queryEditor.posFromIndex(error.index);
         const endPosition = {
           line: startPosition.line,
-          ch: startPosition.ch + (error.length || Infinity)
+          ch: startPosition.ch + (error.length || Infinity),
         };
 
         if (error.index === queryText.length) {
@@ -289,16 +304,12 @@ let tree;
           }
         }
 
-        queryEditor.markText(
-          startPosition,
-          endPosition,
-          {
-            className: 'query-error',
-            inclusiveLeft: true,
-            inclusiveRight: true,
-            attributes: {title: error.message}
-          }
-        );
+        queryEditor.markText(startPosition, endPosition, {
+          className: "query-error",
+          inclusiveLeft: true,
+          inclusiveRight: true,
+          attributes: { title: error.message },
+        });
       }
     });
 
@@ -310,14 +321,11 @@ let tree;
     if (isRendering) return;
 
     const selection = codeEditor.getDoc().listSelections()[0];
-    let start = {row: selection.anchor.line, column: selection.anchor.ch};
-    let end = {row: selection.head.line, column: selection.head.ch};
+    let start = { row: selection.anchor.line, column: selection.anchor.ch };
+    let end = { row: selection.head.line, column: selection.head.ch };
     if (
       start.row > end.row ||
-      (
-        start.row === end.row &&
-        start.column > end.column
-      )
+      (start.row === end.row && start.column > end.column)
     ) {
       let swap = end;
       end = start;
@@ -327,12 +335,22 @@ let tree;
     if (treeRows) {
       if (treeRowHighlightedIndex !== -1) {
         const row = treeRows[treeRowHighlightedIndex];
-        if (row) treeRows[treeRowHighlightedIndex] = row.replace('highlighted', 'plain');
+        if (row)
+          treeRows[treeRowHighlightedIndex] = row.replace(
+            "highlighted",
+            "plain"
+          );
       }
-      treeRowHighlightedIndex = treeRows.findIndex(row => row.includes(`data-id=${node.id}`));
+      treeRowHighlightedIndex = treeRows.findIndex((row) =>
+        row.includes(`data-id=${node.id}`)
+      );
       if (treeRowHighlightedIndex !== -1) {
         const row = treeRows[treeRowHighlightedIndex];
-        if (row) treeRows[treeRowHighlightedIndex] = row.replace('plain', 'highlighted');
+        if (row)
+          treeRows[treeRowHighlightedIndex] = row.replace(
+            "plain",
+            "highlighted"
+          );
       }
       cluster.update(treeRows);
       const lineHeight = cluster.options.item_height;
@@ -340,26 +358,25 @@ let tree;
       const containerHeight = outputContainerScroll.clientHeight;
       const offset = treeRowHighlightedIndex * lineHeight;
       if (scrollTop > offset - 20) {
-        $(outputContainerScroll).animate({scrollTop: offset - 20}, 150);
+        $(outputContainerScroll).animate({ scrollTop: offset - 20 }, 150);
       } else if (scrollTop < offset + lineHeight + 40 - containerHeight) {
-        $(outputContainerScroll).animate({scrollTop: offset - containerHeight + 40}, 150);
+        $(outputContainerScroll).animate(
+          { scrollTop: offset - containerHeight + 40 },
+          150
+        );
       }
     }
   }
 
   function handleTreeClick(event) {
-    if (event.target.tagName === 'A') {
+    if (event.target.tagName === "A") {
       event.preventDefault();
-      const [startRow, startColumn, endRow, endColumn] = event
-        .target
-        .dataset
-        .range
-        .split(',')
-        .map(n => parseInt(n));
+      const [startRow, startColumn, endRow, endColumn] =
+        event.target.dataset.range.split(",").map((n) => parseInt(n));
       codeEditor.focus();
       codeEditor.setSelection(
-        {line: startRow, ch: startColumn},
-        {line: endRow, ch: endColumn}
+        { line: startRow, ch: startColumn },
+        { line: endRow, ch: endColumn }
       );
     }
   }
@@ -368,9 +385,9 @@ let tree;
     if (loggingCheckbox.checked) {
       parser.setLogger((message, lexing) => {
         if (lexing) {
-          console.log("  ", message)
+          console.log("  ", message);
         } else {
-          console.log(message)
+          console.log(message);
         }
       });
     } else {
@@ -380,11 +397,11 @@ let tree;
 
   function handleQueryEnableChange() {
     if (queryCheckbox.checked) {
-      queryContainer.style.visibility = '';
-      queryContainer.style.position = '';
+      queryContainer.style.visibility = "";
+      queryContainer.style.position = "";
     } else {
-      queryContainer.style.visibility = 'hidden';
-      queryContainer.style.position = 'absolute';
+      queryContainer.style.visibility = "hidden";
+      queryContainer.style.position = "absolute";
     }
     handleQueryChange();
   }
@@ -394,24 +411,30 @@ let tree;
     const newLineCount = change.text.length;
     const lastLineLength = change.text[newLineCount - 1].length;
 
-    const startPosition = {row: change.from.line, column: change.from.ch};
-    const oldEndPosition = {row: change.to.line, column: change.to.ch};
+    const startPosition = { row: change.from.line, column: change.from.ch };
+    const oldEndPosition = { row: change.to.line, column: change.to.ch };
     const newEndPosition = {
       row: startPosition.row + newLineCount - 1,
-      column: newLineCount === 1
-        ? startPosition.column + lastLineLength
-        : lastLineLength
+      column:
+        newLineCount === 1
+          ? startPosition.column + lastLineLength
+          : lastLineLength,
     };
 
     const startIndex = codeEditor.indexFromPos(change.from);
     let newEndIndex = startIndex + newLineCount - 1;
     let oldEndIndex = startIndex + oldLineCount - 1;
     for (let i = 0; i < newLineCount; i++) newEndIndex += change.text[i].length;
-    for (let i = 0; i < oldLineCount; i++) oldEndIndex += change.removed[i].length;
+    for (let i = 0; i < oldLineCount; i++)
+      oldEndIndex += change.removed[i].length;
 
     return {
-      startIndex, oldEndIndex, newEndIndex,
-      startPosition, oldEndPosition, newEndPosition
+      startIndex,
+      oldEndIndex,
+      newEndIndex,
+      startPosition,
+      oldEndPosition,
+      newEndPosition,
     };
   }
 
@@ -429,7 +452,7 @@ let tree;
       queryInput.value = query;
       codeInput.value = sourceCode;
       languageSelect.value = language;
-      queryCheckbox.checked = (queryEnabled === 'true');
+      queryCheckbox.checked = queryEnabled === "true";
     }
   }
 
@@ -446,9 +469,10 @@ let tree;
 
   function debounce(func, wait, immediate) {
     var timeout;
-    return function() {
-      var context = this, args = arguments;
-      var later = function() {
+    return function () {
+      var context = this,
+        args = arguments;
+      var later = function () {
         timeout = null;
         if (!immediate) func.apply(context, args);
       };

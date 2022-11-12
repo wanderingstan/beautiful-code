@@ -1,6 +1,7 @@
 /* Override junk from base stylesheet */
 .CodeMirror {
   max-height: none !important;
+  font-family: "Source Code Pro";
 }
 .CodeMirror-scroll {
   max-height: none !important;
@@ -8,9 +9,41 @@
 
 #code-input {
   display: none;
+  line-height: normal;
 }
 
+.CodeMirror {
+  line-height: normal;
+  font-variant-ligatures: normal;
+}
+
+/* ----------------------------- */
+
 .capture-function-defn {
-  font-size: 18px;
-  color: blue !important;
+  font-size: 2rem;
+  color: darkblue !important;
+  font-weight: 500;
+  /* letter-spacing: -0.1rem; */
+  font-family: "Book Antiqua";
+  font-style: italic;
+}
+
+.capture-punctuation-bracket {
+  display: inline-block;
+  transform: scale(1, 1.2);
+  vertical-align: text-bottom;
+}
+
+.capture-function-keyword {
+  display: inline-flex;
+  border-radius: 0.7rem;
+  /* border: 0.1rem solid darkblue; */
+  color: white !important;
+  background-color: cornflowerblue;
+  font-size: 0.8rem;
+  max-height: 1.3rem;
+  align-items: center;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+  /* font-family: Arial; */
 }

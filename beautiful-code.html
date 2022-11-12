@@ -6,14 +6,30 @@ permalink: playground
 --- -->
 
 <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- <link rel="stylesheet"
+    href="https://tree-sitter.github.io/tree-sitter/assets/css/style.css?v=fb5fbdd78700b20754da5e6b4f2b4317a912e2d2"
+    media="screen" type="text/css"> -->
+  <title>Tree-sitter｜Playground</title>
+  <link rel="icon" type="image/png" href="/tree-sitter/assets/images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/tree-sitter/assets/images/favicon-16x16.png" sizes="16x16">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/codemirror.min.css">
+  <!-- Dark? -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/lesser-dark.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.css">
+  <link rel="stylesheet" href="dark.css">
+  <link rel="stylesheet" href="beautiful-code.css">
+
+  <script src="textarea-file-ops.js"></script>
+  <script src="format-query.js"></script>
 </head>
 
 <body>
 
-  <h1>Syntax Tree Playground</h1>
+  <h1>Beautiful Code</h1>
 
   <div id="playground-container" style="visibility: hidden;">
 
@@ -43,8 +59,10 @@ permalink: playground
     <input id="query-checkbox" type="checkbox"></input>
     <label for="query-checkbox">Query</label>
 
-    <textarea id="code-input">
-</textarea>
+    <div style="height: 1000px">
+      <textarea id="code-input"></textarea>
+      <button onclick="downloadText('code-input','playground.js')">Save</button>
+    </div>
 
     <div id="query-container" style="visibility: hidden; position: absolute;">
       <h4>Query</h4>
@@ -69,7 +87,6 @@ permalink: playground
   <script>LANGUAGE_BASE_URL = "https://tree-sitter.github.io";</script>
   <script src="https://tree-sitter.github.io/tree-sitter.js"></script>
 
-  <!-- {% endif %} -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.js"></script>
   <script src="playground.js"></script>
