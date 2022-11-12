@@ -1,3 +1,13 @@
+.file-working {
+  display: flex;
+}
+
+.file-pane {
+  flex: 50%;
+  height: 1000px;
+  overflow: scroll;
+}
+
 /* Override junk from base stylesheet */
 .CodeMirror {
   max-height: none !important;
