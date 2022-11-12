@@ -47,3 +47,11 @@
   padding-left: 0.2rem;
   /* font-family: Arial; */
 }
+
+/* ----------------------------- */
+
+#output-container-scroll {
+  font-family: "Source Code Pro";
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
