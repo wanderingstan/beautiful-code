@@ -27,7 +27,7 @@ let tree;
   const outputContainerScroll = document.getElementById(
     "output-container-scroll"
   );
-  const playgroundContainer = document.getElementById("playground-container");
+  // const playgroundContainer = document.getElementById("playground-container");
   const queryCheckbox = document.getElementById("query-checkbox");
   const queryContainer = document.getElementById("query-container");
   const queryInput = document.getElementById("query-input");
@@ -82,7 +82,7 @@ let tree;
   handleQueryEnableChange();
   await handleLanguageChange();
 
-  playgroundContainer.style.visibility = "visible";
+  // playgroundContainer.style.visibility = "visible";
 
   async function handleLanguageChange() {
     const newLanguageName = languageSelect.value;
