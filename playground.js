@@ -18,7 +18,7 @@ let tree;
     "sienna",
   ];
 
-  const scriptURL = document.currentScript.getAttribute("src");
+  // const scriptURL = document.currentScript.getAttribute("src");
 
   const codeInput = document.getElementById("code-input");
   const languageSelect = document.getElementById("language-select");

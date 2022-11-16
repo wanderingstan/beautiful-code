@@ -15,3 +15,15 @@ function downloadText(elementId, filename = "default.txt") {
   anchor.click();
   document.body.removeChild(anchor);
 }
+
+function loadFile(elementId, fileUrl) {
+  if (fileUrl === "PROMPT") {
+    fileUrl = prompt(
+      "Enter file URL:",
+      "https://raw.githubusercontent.com/tree-sitter/tree-sitter/master/docs/assets/js/playground.js"
+    );
+  }
+  $.get(fileUrl, function (result) {
+    editor.getDoc().setValue(result);
+  });
+}
