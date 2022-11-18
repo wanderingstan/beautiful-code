@@ -88,6 +88,9 @@ let tree;
   handleQueryEnableChange();
   await handleLanguageChange();
 
+  // Load deafult query
+  queryEditor.getDoc().setValue(FORMAT_QUERY);
+
   // playgroundContainer.style.visibility = "visible";
 
   async function handleLanguageChange() {
@@ -271,9 +274,9 @@ let tree;
       queryEditor.getAllMarks().forEach((m) => m.clear());
       // if (!queryCheckbox.checked) return;
 
-      const queryText = queryEditor.getValue()
-        ? queryEditor.getValue()
-        : FORMAT_QUERY; // STAN
+      const queryText = queryEditor.getValue();
+      // ? queryEditor.getValue()
+      // : FORMAT_QUERY; // STAN
 
       try {
         query = parser.getLanguage().query(queryText);
