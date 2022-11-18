@@ -31,26 +31,29 @@ let tree;
   const queryCheckbox = document.getElementById("query-checkbox");
   const queryContainer = document.getElementById("query-container");
   const queryInput = document.getElementById("query-input");
-  const updateTimeSpan = document.getElementById("update-time");
   const languagesByName = {};
+
+  const saveButton = document.getElementById("save-button");
+  const loadButton = document.getElementById("load-button");
 
   loadState();
 
   await TreeSitter.init();
 
   const parser = new TreeSitter();
-  const codeEditor = CodeMirror.fromTextArea(codeInput, {
-    // lineNumbers: true,
-    lineNumbers: false,
-    showCursorWhenSelecting: true,
-  });
-  codeEditor.setSize("100%", "1000px");
-
   const queryEditor = CodeMirror.fromTextArea(queryInput, {
     // lineNumbers: true,
     lineNumbers: false,
     showCursorWhenSelecting: true,
   });
+  queryEditor.setSize("100%", "100%");
+
+  const codeEditor = CodeMirror.fromTextArea(codeInput, {
+    // lineNumbers: true,
+    lineNumbers: false,
+    showCursorWhenSelecting: true,
+  });
+  codeEditor.setSize("100%", "100%");
 
   const cluster = new Clusterize({
     rows: [],
@@ -78,6 +81,9 @@ let tree;
   queryCheckbox.addEventListener("change", handleQueryEnableChange);
   languageSelect.addEventListener("change", handleLanguageChange);
   outputContainer.addEventListener("click", handleTreeClick);
+
+  loadButton.addEventListener("click", handleLoad);
+  saveButton.addEventListener("click", handleSave);
 
   handleQueryEnableChange();
   await handleLanguageChange();
@@ -120,7 +126,7 @@ let tree;
     const newTree = parser.parse(newText, tree);
     const duration = (performance.now() - start).toFixed(1);
 
-    updateTimeSpan.innerText = `${duration} ms`;
+    // updateTimeSpan.innerText = `${duration} ms`;
     if (tree) tree.delete();
     tree = newTree;
     parseCount++;
@@ -481,5 +487,34 @@ let tree;
       timeout = setTimeout(later, wait);
       if (callNow) func.apply(context, args);
     };
+  }
+
+  // Maybe better: https://stackoverflow.com/a/70001920/59913
+  // with: https://web.dev/file-system-access/#ask-the-user-to-pick-a-file-to-read
+
+  // https://stackoverflow.com/a/48550997/59913
+  function handleSave() {
+    const filename = "default.txt";
+    var text = document.getElementById("code-input").value;
+    text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+    let blob = new Blob([text], { type: "text/plain" });
+    let anchor = document.createElement("a");
+    anchor.download = filename;
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.target = "_blank";
+    anchor.style.display = "none"; // just to be safe!
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  }
+
+  function handleLoad() {
+    fileUrl = prompt(
+      "Enter file URL:",
+      "https://raw.githubusercontent.com/tree-sitter/tree-sitter/master/docs/assets/js/playground.js"
+    );
+    $.get(fileUrl, function (result) {
+      codeEditor.getDoc().setValue(result);
+    });
   }
 })();

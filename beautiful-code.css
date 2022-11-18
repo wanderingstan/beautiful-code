@@ -1,17 +1,25 @@
 body {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
+  overflow: hidden;
+  font-family: "Book Antiqua";
 }
 
+#app-title {
+  font-style: italic;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
 .file-working {
   display: flex;
-  height: 90%; // TODO: Change this to flexbox to dynamically fill veritcal space
+  height: 95%; // TODO: Change this to flexbox to dynamically fill veritcal space
 }
 
 .file-pane {
   flex: 50%;
   height: 100%;
   overflow: scroll;
+  border: 1px solid blue;
 }
 
 /* Override junk from base stylesheet */
@@ -23,7 +31,8 @@ body {
   max-height: none !important;
 }
 
-#code-input {
+#code-input,
+#query-input {
   display: none;
   line-height: normal;
 }

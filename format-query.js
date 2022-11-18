@@ -104,6 +104,8 @@ FORMAT_QUERY = `
 [
   "async"
   "function"
+  "export"
+  "default"
 ] @function-keyword
 
 
