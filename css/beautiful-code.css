@@ -1,0 +1,81 @@
+body {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  overflow: hidden;
+  font-family: "Book Antiqua";
+}
+
+#app-title {
+  font-style: italic;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+.file-working {
+  display: flex;
+  height: 95%; // TODO: Change this to flexbox to dynamically fill veritcal space
+}
+
+.file-pane {
+  flex: 50%;
+  height: 100%;
+  overflow: scroll;
+}
+
+/* Override junk from base stylesheet */
+.CodeMirror {
+  max-height: none !important;
+  font-family: "Source Code Pro";
+}
+.CodeMirror-scroll {
+  max-height: none !important;
+}
+
+#code-input,
+#query-input {
+  display: none;
+  line-height: normal;
+}
+
+.CodeMirror {
+  line-height: normal;
+  font-variant-ligatures: normal;
+}
+
+/* ----------------------------- */
+
+.capture-function-defn {
+  font-size: 2rem;
+  color: darkblue !important;
+  font-weight: 500;
+  /* letter-spacing: -0.1rem; */
+  font-family: "Book Antiqua";
+  font-style: italic;
+}
+
+.capture-punctuation-bracket {
+  display: inline-block;
+  transform: scale(1, 1.2);
+  vertical-align: text-bottom;
+}
+
+.capture-function-keyword {
+  display: inline-flex;
+  border-radius: 0.7rem;
+  /* border: 0.1rem solid darkblue; */
+  color: white !important;
+  background-color: cornflowerblue;
+  font-size: 0.8rem;
+  max-height: 1.3rem;
+  align-items: center;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+  /* font-family: Arial; */
+}
+
+/* ----------------------------- */
+
+#output-container-scroll {
+  font-family: "Source Code Pro";
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
