@@ -52,7 +52,7 @@ pre {
   color: darkblue !important;
   font-weight: 500;
   /* letter-spacing: -0.1rem; */
-  font-family: "Book Antiqua";
+  font-family: "Palatino", "URW Palladio L"; /* "Book Antiqua", */
   font-style: italic;
 }
 
