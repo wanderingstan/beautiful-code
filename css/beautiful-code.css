@@ -21,10 +21,14 @@ body {
   overflow: scroll;
 }
 
+pre {
+  font-family: "Source Code Pro", monospace;
+}
+
 /* Override junk from base stylesheet */
 .CodeMirror {
   max-height: none !important;
-  font-family: "Source Code Pro";
+  font-family: "Source Code Pro", monospace;
 }
 .CodeMirror-scroll {
   max-height: none !important;
