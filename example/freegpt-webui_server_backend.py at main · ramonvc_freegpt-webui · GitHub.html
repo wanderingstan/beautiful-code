@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://github.com/ramonvc/freegpt-webui/blob/main/server/backend.py -->
+<!-- For dark mode, set `data-light-theme="dark"` -->
+<html lang="en" data-color-mode="auto" data-light-theme="dark" data-dark-theme="dark" data-a11y-animated-images="system" data-turbo-loaded=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.turbo-progress-bar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #0076ff;
+  z-index: 2147483647;
+  transition:
+    width 300ms ease-out,
+    opacity 150ms 150ms ease-in;
+  transform: translate3d(0, 0, 0);
+}
+</style>
+    
+  
+  
+  
+  
+  
+  
+
+  
+
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/light-4569ff6a5326.css"><link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/dark-34efc528590d.css"><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed-b94a34c1d526.css"><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast-a826e4e21b45.css"><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind-6e131b11dd64.css"><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind-6861c53bb0f6.css"><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast-1cfc1f582a4c.css"><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia-2fb3a50ca380.css"><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia-3da111582952.css">
+  
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/primer-primitives-fb1d51d1ef66.css">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/primer-53690bf8aadd.css">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/global-d31d56021874.css">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/github-2c7b1701fb19.css">
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/site-aa0bea65ed3d.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/explore-a3d82a8916fa.css">
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+  
+
+  
+  
+
+    
+  
+  
+  
+  
+
+
+
+  
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+    
+    
+      
+      
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
+        
+
+
+
+        
+
+    
+
+
+  <meta http-equiv="x-pjax-version" content="b189c0ae76f33e50853cafd2b47bd58b207f2ea5ba68d501905451d20c39c61b" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-csp-version" content="0db263f9a873141d8256f783c35f244c06d490aacc3b680f99794dd8fd59fb59" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-css-version" content="d7827b6c4cdb674702c8a883ee2d5739d153d7f3ff3a61fdbf83a65f07f0ccae" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-js-version" content="88fb34feb23dbbbd5d15ad5f7f5529a32b4ad59b1020cbb32babdc2701081096" data-turbo-track="reload">
+
+  
+
+
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+
+
+
+
+
+  
+
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/code-5aae01d45c34.css"><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/vendors-node_modules_optimizely_optimizely-sdk_dist_optimizely_browser_es_min_js-node_modules-089adc-2328ba323205.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/optimizely-26ff2afd6edd.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/vendors-node_modules_virtualized-list_es_index_js-node_modules_github_template-parts_lib_index_js-677582870bfd.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/vendors-node_modules_github_remote-form_dist_index_js-node_modules_delegated-events_dist_inde-c537341-c7299eece475.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/app_assets_modules_github_ref-selector_ts-0e2b12902d39.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/codespaces-4975e3c146a1.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/vendors-node_modules_github_mini-throttle_dist_decorators_js-node_modules_github_remote-form_-01f9fa-9132628fb196.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/vendors-node_modules_github_file-attachment-element_dist_index_js-node_modules_github_filter--b2311f-939ba5085db0.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/repositories-9a72fd89c2e9.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/vendors-node_modules_github_remote-form_dist_index_js-node_modules_delegated-events_dist_inde-0e9dbe-6435366f0862.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/topic-suggestions-df13cff9c1c3.js"></script><script crossorigin="anonymous" defer="defer" type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/code-menu-082003a113a7.js"></script><script type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/vendors-node_modules_github_clipboard-copy-element_dist_index_esm_js-node_modules_scroll-anch-5f2301-8eba3b95d1b7.js"></script><script type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/app_assets_modules_github_diffs_blob-lines_ts-app_assets_modules_github_diffs_linkable-line-n-f96c66-1276a3bb09a8.js"></script><script type="application/javascript" src="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files/diffs-8e70bc9b723f.js"></script><link rel="dns-prefetch" href="https://github.githubassets.com/"><link rel="dns-prefetch" href="https://avatars.githubusercontent.com/"><link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com/"><link rel="dns-prefetch" href="https://user-images.githubusercontent.com/"><link rel="preconnect" href="https://github.githubassets.com/" crossorigin=""><link rel="preconnect" href="https://avatars.githubusercontent.com/"><meta name="optimizely-datafile" content="{&quot;groups&quot;: [], &quot;environmentKey&quot;: &quot;production&quot;, &quot;rollouts&quot;: [], &quot;typedAudiences&quot;: [], &quot;projectId&quot;: &quot;16737760170&quot;, &quot;variables&quot;: [], &quot;featureFlags&quot;: [], &quot;experiments&quot;: [], &quot;version&quot;: &quot;4&quot;, &quot;audiences&quot;: [{&quot;conditions&quot;: &quot;[\&quot;or\&quot;, {\&quot;match\&quot;: \&quot;exact\&quot;, \&quot;name\&quot;: \&quot;$opt_dummy_attribute\&quot;, \&quot;type\&quot;: \&quot;custom_attribute\&quot;, \&quot;value\&quot;: \&quot;$opt_dummy_value\&quot;}]&quot;, &quot;id&quot;: &quot;$opt_dummy_audience&quot;, &quot;name&quot;: &quot;Optimizely-Generated Audience for Backwards Compatibility&quot;}], &quot;anonymizeIP&quot;: true, &quot;sdkKey&quot;: &quot;WTc6awnGuYDdG98CYRban&quot;, &quot;attributes&quot;: [{&quot;id&quot;: &quot;16822470375&quot;, &quot;key&quot;: &quot;user_id&quot;}, {&quot;id&quot;: &quot;17143601254&quot;, &quot;key&quot;: &quot;spammy&quot;}, {&quot;id&quot;: &quot;18175660309&quot;, &quot;key&quot;: &quot;organization_plan&quot;}, {&quot;id&quot;: &quot;18813001570&quot;, &quot;key&quot;: &quot;is_logged_in&quot;}, {&quot;id&quot;: &quot;19073851829&quot;, &quot;key&quot;: &quot;geo&quot;}, {&quot;id&quot;: &quot;20175462351&quot;, &quot;key&quot;: &quot;requestedCurrency&quot;}, {&quot;id&quot;: &quot;20785470195&quot;, &quot;key&quot;: &quot;country_code&quot;}, {&quot;id&quot;: &quot;21656311196&quot;, &quot;key&quot;: &quot;opened_downgrade_dialog&quot;}], &quot;botFiltering&quot;: false, &quot;accountId&quot;: &quot;16737760170&quot;, &quot;events&quot;: [{&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;17911811441&quot;, &quot;key&quot;: &quot;hydro_click.dashboard.teacher_toolbox_cta&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18124116703&quot;, &quot;key&quot;: &quot;submit.organizations.complete_sign_up&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18145892387&quot;, &quot;key&quot;: &quot;no_metric.tracked_outside_of_optimizely&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18178755568&quot;, &quot;key&quot;: &quot;click.org_onboarding_checklist.add_repo&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18180553241&quot;, &quot;key&quot;: &quot;submit.repository_imports.create&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18186103728&quot;, &quot;key&quot;: &quot;click.help.learn_more_about_repository_creation&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18188530140&quot;, &quot;key&quot;: &quot;test_event&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18191963644&quot;, &quot;key&quot;: &quot;click.empty_org_repo_cta.transfer_repository&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18195612788&quot;, &quot;key&quot;: &quot;click.empty_org_repo_cta.import_repository&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18210945499&quot;, &quot;key&quot;: &quot;click.org_onboarding_checklist.invite_members&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18211063248&quot;, &quot;key&quot;: &quot;click.empty_org_repo_cta.create_repository&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18215721889&quot;, &quot;key&quot;: &quot;click.org_onboarding_checklist.update_profile&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18224360785&quot;, &quot;key&quot;: &quot;click.org_onboarding_checklist.dismiss&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18234832286&quot;, &quot;key&quot;: &quot;submit.organization_activation.complete&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18252392383&quot;, &quot;key&quot;: &quot;submit.org_repository.create&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18257551537&quot;, &quot;key&quot;: &quot;submit.org_member_invitation.create&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18259522260&quot;, &quot;key&quot;: &quot;submit.organization_profile.update&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18564603625&quot;, &quot;key&quot;: &quot;view.classroom_select_organization&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18568612016&quot;, &quot;key&quot;: &quot;click.classroom_sign_in_click&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18572592540&quot;, &quot;key&quot;: &quot;view.classroom_name&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18574203855&quot;, &quot;key&quot;: &quot;click.classroom_create_organization&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18582053415&quot;, &quot;key&quot;: &quot;click.classroom_select_organization&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18589463420&quot;, &quot;key&quot;: &quot;click.classroom_create_classroom&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18591323364&quot;, &quot;key&quot;: &quot;click.classroom_create_first_classroom&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18591652321&quot;, &quot;key&quot;: &quot;click.classroom_grant_access&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18607131425&quot;, &quot;key&quot;: &quot;view.classroom_creation&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18831680583&quot;, &quot;key&quot;: &quot;upgrade_account_plan&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19064064515&quot;, &quot;key&quot;: &quot;click.signup&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19075373687&quot;, &quot;key&quot;: &quot;click.view_account_billing_page&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19077355841&quot;, &quot;key&quot;: &quot;click.dismiss_signup_prompt&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19079713938&quot;, &quot;key&quot;: &quot;click.contact_sales&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19120963070&quot;, &quot;key&quot;: &quot;click.compare_account_plans&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19151690317&quot;, &quot;key&quot;: &quot;click.upgrade_account_cta&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19424193129&quot;, &quot;key&quot;: &quot;click.open_account_switcher&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19520330825&quot;, &quot;key&quot;: &quot;click.visit_account_profile&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19540970635&quot;, &quot;key&quot;: &quot;click.switch_account_context&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19730198868&quot;, &quot;key&quot;: &quot;submit.homepage_signup&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19820830627&quot;, &quot;key&quot;: &quot;click.homepage_signup&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19988571001&quot;, &quot;key&quot;: &quot;click.create_enterprise_trial&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20036538294&quot;, &quot;key&quot;: &quot;click.create_organization_team&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20040653299&quot;, &quot;key&quot;: &quot;click.input_enterprise_trial_form&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20062030003&quot;, &quot;key&quot;: &quot;click.continue_with_team&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20068947153&quot;, &quot;key&quot;: &quot;click.create_organization_free&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20086636658&quot;, &quot;key&quot;: &quot;click.signup_continue.username&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20091648988&quot;, &quot;key&quot;: &quot;click.signup_continue.create_account&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20103637615&quot;, &quot;key&quot;: &quot;click.signup_continue.email&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20111574253&quot;, &quot;key&quot;: &quot;click.signup_continue.password&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20120044111&quot;, &quot;key&quot;: &quot;view.pricing_page&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20152062109&quot;, &quot;key&quot;: &quot;submit.create_account&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20165800992&quot;, &quot;key&quot;: &quot;submit.upgrade_payment_form&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20171520319&quot;, &quot;key&quot;: &quot;submit.create_organization&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20222645674&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.discuss_your_needs&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20227443657&quot;, &quot;key&quot;: &quot;submit.verify_primary_user_email&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20234607160&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.try_enterprise&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20238175784&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.team&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20239847212&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.continue_free&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20251097193&quot;, &quot;key&quot;: &quot;recommended_plan&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20438619534&quot;, &quot;key&quot;: &quot;click.pricing_calculator.1_member&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20456699683&quot;, &quot;key&quot;: &quot;click.pricing_calculator.15_members&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20467868331&quot;, &quot;key&quot;: &quot;click.pricing_calculator.10_members&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20476267432&quot;, &quot;key&quot;: &quot;click.trial_days_remaining&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20476357660&quot;, &quot;key&quot;: &quot;click.discover_feature&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20479287901&quot;, &quot;key&quot;: &quot;click.pricing_calculator.custom_members&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20481107083&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.apply_teacher_benefits&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20483089392&quot;, &quot;key&quot;: &quot;click.pricing_calculator.5_members&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20484283944&quot;, &quot;key&quot;: &quot;click.onboarding_task&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20484996281&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.apply_student_benefits&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20486713726&quot;, &quot;key&quot;: &quot;click.onboarding_task_breadcrumb&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20490791319&quot;, &quot;key&quot;: &quot;click.upgrade_to_enterprise&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20491786766&quot;, &quot;key&quot;: &quot;click.talk_to_us&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20494144087&quot;, &quot;key&quot;: &quot;click.dismiss_enterprise_trial&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20499722759&quot;, &quot;key&quot;: &quot;completed_all_tasks&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20500710104&quot;, &quot;key&quot;: &quot;completed_onboarding_tasks&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20513160672&quot;, &quot;key&quot;: &quot;click.read_doc&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20516196762&quot;, &quot;key&quot;: &quot;actions_enabled&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20518980986&quot;, &quot;key&quot;: &quot;click.dismiss_trial_banner&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20535446721&quot;, &quot;key&quot;: &quot;click.issue_actions_prompt.dismiss_prompt&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20557002247&quot;, &quot;key&quot;: &quot;click.issue_actions_prompt.setup_workflow&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20595070227&quot;, &quot;key&quot;: &quot;click.pull_request_setup_workflow&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20626600314&quot;, &quot;key&quot;: &quot;click.seats_input&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20642310305&quot;, &quot;key&quot;: &quot;click.decrease_seats_number&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20662990045&quot;, &quot;key&quot;: &quot;click.increase_seats_number&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20679620969&quot;, &quot;key&quot;: &quot;click.public_product_roadmap&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20761240940&quot;, &quot;key&quot;: &quot;click.dismiss_survey_banner&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20767210721&quot;, &quot;key&quot;: &quot;click.take_survey&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20795281201&quot;, &quot;key&quot;: &quot;click.archive_list&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20966790249&quot;, &quot;key&quot;: &quot;contact_sales.submit&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20996500333&quot;, &quot;key&quot;: &quot;contact_sales.existing_customer&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20996890162&quot;, &quot;key&quot;: &quot;contact_sales.blank_message_field&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21000470317&quot;, &quot;key&quot;: &quot;contact_sales.personal_email&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21002790172&quot;, &quot;key&quot;: &quot;contact_sales.blank_phone_field&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21354412592&quot;, &quot;key&quot;: &quot;click.dismiss_create_readme&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21366102546&quot;, &quot;key&quot;: &quot;click.dismiss_zero_user_content&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21370252505&quot;, &quot;key&quot;: &quot;account_did_downgrade&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21370840408&quot;, &quot;key&quot;: &quot;click.cta_create_readme&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21375451068&quot;, &quot;key&quot;: &quot;click.cta_create_new_repository&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21385390948&quot;, &quot;key&quot;: &quot;click.zero_user_content&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21467712175&quot;, &quot;key&quot;: &quot;click.downgrade_keep&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21484112202&quot;, &quot;key&quot;: &quot;click.downgrade&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21495292213&quot;, &quot;key&quot;: &quot;click.downgrade_survey_exit&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21508241468&quot;, &quot;key&quot;: &quot;click.downgrade_survey_submit&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21512030356&quot;, &quot;key&quot;: &quot;click.downgrade_support&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21539090022&quot;, &quot;key&quot;: &quot;click.downgrade_exit&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21543640644&quot;, &quot;key&quot;: &quot;click_fetch_upstream&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21646510300&quot;, &quot;key&quot;: &quot;click.move_your_work&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21656151116&quot;, &quot;key&quot;: &quot;click.add_branch_protection_rule&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21663860599&quot;, &quot;key&quot;: &quot;click.downgrade_dialog_open&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21687860483&quot;, &quot;key&quot;: &quot;click.learn_about_protected_branches&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21689050333&quot;, &quot;key&quot;: &quot;click.dismiss_protect_this_branch&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21864370109&quot;, &quot;key&quot;: &quot;click.sign_in&quot;}], &quot;revision&quot;: &quot;1372&quot;}"><title>freegpt-webui/server/backend.py at main · ramonvc/freegpt-webui · GitHub</title><meta name="route-pattern" content="/:user_id/:repository"><meta name="current-catalog-service-hash" content="82c569b93da5c18ed649ebd4c2c79437db4611a6a1373e805a3cb001c64130b7"><meta name="request-id" content="E20D:61C3:1AE4072:2710E8A:649DA7AC" data-pjax-transient="true"><meta name="html-safe-nonce" content="d542df13dda52cb979d7289e4b592ec6c2e2e559ea62711bf9faa3285ecca486" data-pjax-transient="true"><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS90cmVuZGluZy9weXRob24iLCJyZXF1ZXN0X2lkIjoiRTIwRDo2MUMzOjFBRTQwNzI6MjcxMEU4QTo2NDlEQTdBQyIsInZpc2l0b3JfaWQiOiI4NjA2ODk3Njg3MjY1Mjg4OTYyIiwicmVnaW9uX2VkZ2UiOiJpYWQiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-pjax-transient="true"><meta name="visitor-hmac" content="71d171a61b8ffb4a3ce85f4f4aeeecf7dbd9c79f41dde82b1bc4343214bd2c69" data-pjax-transient="true"><link rel="assets" href="https://github.githubassets.com/"><meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY"><meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU"><meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA"><meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc"><meta name="google-site-verification" content="Apib7-x98H0j5cPqHWwSMm6dNU4GmODRoqxLiDzdx9I"><meta name="octolytics-url" content="https://collector.github.com/github/collect"><meta name="user-login" content=""><meta name="enabled-features" content="TURBO_EXPERIMENT_RISKY,IMAGE_METRIC_TRACKING,GEOJSON_AZURE_MAPS"><meta name="go-import" content="github.com/ramonvc/freegpt-webui git https://github.com/ramonvc/freegpt-webui.git"><meta name="octolytics-dimension-user_id" content="13617054"><meta name="octolytics-dimension-user_login" content="ramonvc"><meta name="octolytics-dimension-repository_id" content="649154175"><meta name="octolytics-dimension-repository_nwo" content="ramonvc/freegpt-webui"><meta name="octolytics-dimension-repository_public" content="true"><meta name="octolytics-dimension-repository_is_fork" content="false"><meta name="octolytics-dimension-repository_network_root_id" content="649154175"><meta name="octolytics-dimension-repository_network_root_nwo" content="ramonvc/freegpt-webui"><meta name="turbo-body-classes" content="logged-out env-production page-responsive"><meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats"><meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors"><meta name="browser-optimizely-client-errors-url" content="https://api.github.com/_private/browser/optimizely_client/errors"><link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000"><link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png"><link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg"><meta name="theme-color" content="#1e2327"><meta name="color-scheme" content="light dark"><link rel="manifest" href="https://github.com/manifest.json" crossorigin="use-credentials"><meta name="selected-link" value="repo_source" data-turbo-transient=""><meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-turbo-transient=""><meta name="github-keyboard-shortcuts" content="repository,source-code,file-tree" data-turbo-transient=""><meta name="hovercard-subject-tag" content="repository:649154175" data-turbo-transient=""><meta name="turbo-cache-control" content="no-preview" data-turbo-transient=""><link rel="canonical" href="https://github.com/ramonvc/freegpt-webui/blob/main/server/backend.py" data-turbo-transient="">
+
+
+  <!-- SRJ: bc-example -->
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="./freegpt-webui_server_backend.py at main · ramonvc_freegpt-webui · GitHub_files//bc-example.css">
+
+</head>
+
+
+
+
+
+
+<body class="logged-out env-production page-responsive page-blob" style="word-wrap: break-word;">
+
+
+    <div data-turbo-body="" class="logged-out env-production page-responsive page-blob" style="word-wrap: break-word;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="js-flash-container" data-turbo-replace="">
+
+
+
+
+
+  <template class="js-flash-template"></template>
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="application-main " data-commit-hovercards-enabled="" data-discussion-hovercards-enabled="" data-issue-and-pr-hovercards-enabled="">
+        <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <main id="js-repo-pjax-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<turbo-frame id="repo-content-turbo-frame" target="_top" data-turbo-action="advance" class="" src="https://github.com/ramonvc/freegpt-webui/blob/main/server/backend.py" complete="">
+
+
+  <div class="clearfix container-xl px-3 px-md-4 px-lg-5 mt-4">
+
+
+<div>
+
+
+
+
+
+
+
+<a class="d-none js-permalink-shortcut" data-hotkey="y" href="https://github.com/ramonvc/freegpt-webui/blob/8071fe37707a7560228d7db9c4e72f5c0bb80bca/server/backend.py">Permalink</a>
+
+
+
+
+
+
+
+    <div id="spoof-warning" class="mt-0 pb-3" hidden="" aria-hidden="">
+  <div data-view-component="true" class="flash flash-warn mt-0 clearfix">
+
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert float-left mt-1">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+
+      <div class="overflow-hidden">This commit does not belong to any branch on this repository, and may belong to a fork outside of the repository.</div>
+
+
+
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div data-target="readme-toc.content" class="Box mt-3 position-relative">
+
+  <div class="Box-header js-blob-header py-2 pr-2 d-flex flex-shrink-0 flex-md-row flex-items-center">
+
+
+  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1">
+
+      208 lines (166 sloc)
+      <span class="file-info-divider"></span>
+    6.57 KB
+  </div>
+
+
+
+    <div class="d-flex hide-lg hide-xl flex-order-2 flex-grow-0">
+      <details class="dropdown details-reset details-overlay d-inline-block">
+        <summary class="js-blob-dropdown-click btn-octicon" aria-haspopup="true" aria-label="Possible actions" data-dropdown-tracking="{&quot;type&quot;:&quot;blob_edit_dropdown.more_options_click&quot;,&quot;context&quot;:{&quot;repository_id&quot;:649154175,&quot;actor_id&quot;:null,&quot;github_dev_enabled&quot;:false,&quot;edit_enabled&quot;:false,&quot;small_screen&quot;:true}}">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal">
+    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+</svg>
+        </summary>
+
+        <ul class="dropdown-menu dropdown-menu-sw" style="width: 175px">
+            <li>
+                <a class="dropdown-item tooltipped tooltipped-nw js-remove-unless-platform" data-platforms="windows,mac" href="https://desktop.github.com/">
+                  Open with Desktop
+                </a>
+            </li>
+          <li>
+            <a class="dropdown-item" href="https://github.com/ramonvc/freegpt-webui/raw/main/server/backend.py">
+              View raw
+            </a>
+          </li>
+            <li>
+              <remote-clipboard-copy class="dropdown-item" data-src="/ramonvc/freegpt-webui/raw/main/server/backend.py" data-action="click:remote-clipboard-copy#remoteCopy" data-state-timeout="2000" data-catalyst="">
+
+
+  <span data-target="remote-clipboard-copy.idle">                  <span class="cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:649154175,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/blob/main/server/backend.py&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="90e2196333a720f5306d7e318e6ade45aa6b64d32ebd83557978544dc4839743">
+                    Copy raw contents
+</span></span>
+  <span data-target="remote-clipboard-copy.fetching" hidden="">                  Copy raw contents
+                  <span class="d-inline-block position-relative" style="top: 3px">
+                    <svg aria-label="fetching contents…" style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle>
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg>
+                  </span>
+</span>
+  <span data-target="remote-clipboard-copy.success" hidden="">                  Copy raw contents
+                  <svg aria-label="Copied!" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check color-fg-success">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+</span>
+  <span data-target="remote-clipboard-copy.error" hidden="">                  Copy raw contents
+                  <svg aria-label="Something went wrong. Try again." role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert color-fg-attention">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+</span>
+</remote-clipboard-copy>            </li>
+            <li>
+              <a class="dropdown-item" href="https://github.com/ramonvc/freegpt-webui/blame/main/server/backend.py">
+                View blame
+              </a>
+            </li>
+
+        </ul>
+      </details>
+    </div>
+</div>
+
+
+
+    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  gist-border-0">
+
+
+<div class="js-blob-code-container blob-code-content">
+
+  <template class="js-file-alert-template"></template>
+<template class="js-line-alert-template"></template>
+
+  <table data-hpc="" class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="8" data-paste-markdown-skip="" data-tagsearch-lang="Python" data-tagsearch-path="server/backend.py">
+        <tbody><tr>
+          <td id="L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
+          <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-s1">re</span></td>
+        </tr>
+        <tr>
+          <td id="L2" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="2"></td>
+          <td id="LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-s1">time</span></td>
+        </tr>
+        <tr>
+          <td id="L3" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="3"></td>
+          <td id="LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-s1">g4f</span></td>
+        </tr>
+        <tr>
+          <td id="L4" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="4"></td>
+          <td id="LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1">g4f</span> <span class="pl-k">import</span> <span class="pl-v">ChatCompletion</span></td>
+        </tr>
+        <tr>
+          <td id="L5" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="5"></td>
+          <td id="LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=googletrans&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=4&amp;col=5&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="cef3df0410a36a88af3eb27a6cde8ec27a8611c132462172c6e8d42061ab618b">googletrans</span></span> <span class="pl-k">import</span> <span class="pl-v">Translator</span></td>
+        </tr>
+        <tr>
+          <td id="L6" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="6"></td>
+          <td id="LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1">flask</span> <span class="pl-k">import</span> <span class="pl-s1">request</span></td>
+        </tr>
+        <tr>
+          <td id="L7" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="7"></td>
+          <td id="LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1">datetime</span> <span class="pl-k">import</span> <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=datetime&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=6&amp;col=21&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="c964e0cf40a1e893d147f4f26e6afdda58784219c131ba7cae0e104c8788c43f">datetime</span></span></td>
+        </tr>
+        <tr>
+          <td id="L8" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="8"></td>
+          <td id="LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1">requests</span> <span class="pl-k">import</span> <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:2,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=get&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=7&amp;col=21&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="663d7dfea6b95c7db3ca0a97ff372f2ba8383933b94cb55078d04a9f9aabad5b">get</span></span></td>
+        </tr>
+        <tr>
+          <td id="L9" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="9"></td>
+          <td id="LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1">server</span>.<span class="pl-s1">auto_proxy</span> <span class="pl-k">import</span> <span class="pl-s1">get_random_proxy</span>, <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:2,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=update_working_proxies&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=8&amp;col=48&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="b6454f14176338b47e06e5cf84c6448c332193f482ebfda5148b769a166813d7">update_working_proxies</span></span></td>
+        </tr>
+        <tr>
+          <td id="L10" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="10"></td>
+          <td id="LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1">server</span>.<span class="pl-s1">config</span> <span class="pl-k">import</span> <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:2,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=special_instructions&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=9&amp;col=26&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="2e6d0a37d77d2371b3730ce7731f5f47af14e933ad2cef2638c46333f1a48c38">special_instructions</span></span></td>
+        </tr>
+        <tr>
+          <td id="L11" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="11"></td>
+          <td id="LC11" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L12" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="12"></td>
+          <td id="LC12" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L13" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="13"></td>
+          <td id="LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-k class-header">class</span> <span class="pl-v"><span class="pl-token">Backend_Api</span></span>:</td>
+        </tr>
+        <tr>
+          <td id="L14" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="14"></td>
+          <td id="LC14" class="blob-code blob-code-inner js-file-line">    <span class="pl-k def-header">def</span> <span class="pl-en">__init__</span>(<span class="pl-s1">self</span>, <span class="pl-s1">app</span>, <span class="pl-s1">config</span>: <span class="pl-s1">dict</span>) <span class="pl-c1">-&gt;</span> <span class="pl-c1">None</span>:</td>
+        </tr>
+        <tr class="commentline">
+          <td id="L15" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="15"></td>
+          <td id="LC15" class="blob-code blob-code-inner js-file-line">        <span class="pl-s">"""  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L16" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="16"></td>
+          <td id="LC16" class="blob-code blob-code-inner js-file-line"><span class="pl-s">        Initialize the Backend_Api class.  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L17" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="17"></td>
+          <td id="LC17" class="blob-code blob-code-inner js-file-line"><span class="pl-s"></span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L18" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="18"></td>
+          <td id="LC18" class="blob-code blob-code-inner js-file-line"><span class="pl-s">        :param app: Flask application instance  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L19" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="19"></td>
+          <td id="LC19" class="blob-code blob-code-inner js-file-line"><span class="pl-s">        :param config: Configuration dictionary  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L20" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="20"></td>
+          <td id="LC20" class="blob-code blob-code-inner js-file-line"><span class="pl-s">        """</span></td>
+        </tr>
+        <tr>
+          <td id="L21" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="21"></td>
+          <td id="LC21" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=app&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=20&amp;col=19&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="66647111bbb0a0af74e91c0cf92ffb2e78a1820859964458e6c779882a38150b">app</span></span></td>
+        </tr>
+        <tr>
+          <td id="L22" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="22"></td>
+          <td id="LC22" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-s1">use_auto_proxy</span> <span class="pl-c1">=</span> <span class="pl-s1">config</span>[<span class="pl-s">'use_auto_proxy'</span>]</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L23" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="23"></td>
+          <td id="LC23" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-s1">routes</span> <span class="pl-c1">=</span> {</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L24" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="24"></td>
+          <td id="LC24" class="blob-code blob-code-inner js-file-line">            <span class="pl-s">'/backend-api/v2/conversation'</span>: {</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L25" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="25"></td>
+          <td id="LC25" class="blob-code blob-code-inner js-file-line">                <span class="pl-s">'function'</span>: <span class="pl-s1">self</span>.<span class="pl-s1">_conversation</span>,</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L26" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="26"></td>
+          <td id="LC26" class="blob-code blob-code-inner js-file-line">                <span class="pl-s">'methods'</span>: [<span class="pl-s">'POST'</span>]</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L27" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="27"></td>
+          <td id="LC27" class="blob-code blob-code-inner js-file-line">            }</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L28" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="28"></td>
+          <td id="LC28" class="blob-code blob-code-inner js-file-line">        }</td>
+        </tr>
+        <tr>
+          <td id="L29" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="29"></td>
+          <td id="LC29" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L30" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="30"></td>
+          <td id="LC30" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"># if self.use_auto_proxy:</span></td>
+        </tr>
+        <tr  class="shortline">
+          <td id="L31" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="31"></td>
+          <td id="LC31" class="blob-code blob-code-inner js-file-line">        <span class="pl-c">#    update_proxies = threading.Thread(</span></td>
+        </tr>
+        <tr  class="shortline">
+          <td id="L32" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="32"></td>
+          <td id="LC32" class="blob-code blob-code-inner js-file-line">        <span class="pl-c">#        target=update_working_proxies, daemon=True)</span></td>
+        </tr>
+        <tr>
+          <td id="L33" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="33"></td>
+          <td id="LC33" class="blob-code blob-code-inner js-file-line">        <span class="pl-c">#    update_proxies.start()</span></td>
+        </tr>
+        <tr>
+          <td id="L34" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="34"></td>
+          <td id="LC34" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L35" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="35"></td>
+          <td id="LC35" class="blob-code blob-code-inner js-file-line">    <span class="pl-k def-header">def</span> <span class="pl-en">_conversation</span>(<span class="pl-s1">self</span>):</td>
+        </tr>
+        <tr class="commentline">
+          <td id="L36" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="36"></td>
+          <td id="LC36" class="blob-code blob-code-inner js-file-line">        <span class="pl-s">"""    </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L37" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="37"></td>
+          <td id="LC37" class="blob-code blob-code-inner js-file-line"><span class="pl-s">        Handles the conversation route.    </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L38" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="38"></td>
+          <td id="LC38" class="blob-code blob-code-inner js-file-line"><span class="pl-s"></span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L39" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="39"></td>
+          <td id="LC39" class="blob-code blob-code-inner js-file-line"><span class="pl-s">        :return: Response object containing the generated conversation stream    </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L40" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="40"></td>
+          <td id="LC40" class="blob-code blob-code-inner js-file-line"><span class="pl-s">        """</span></td>
+        </tr>
+        <tr>
+          <td id="L41" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="41"></td>
+          <td id="LC41" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">max_retries</span> <span class="pl-c1">=</span> <span class="pl-c1">3</span></td>
+        </tr>
+        <tr>
+          <td id="L42" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="42"></td>
+          <td id="LC42" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">retries</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span></td>
+        </tr>
+        <tr>
+          <td id="L43" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="43"></td>
+          <td id="LC43" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L44" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="44"></td>
+          <td id="LC44" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">while</span> <span class="pl-s1">retries</span> <span class="pl-c1">&lt;</span> <span class="pl-s1">max_retries</span>:</td>
+        </tr>
+        <tr>
+          <td id="L45" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="45"></td>
+          <td id="LC45" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">try</span>:</td>
+        </tr>
+        <tr>
+          <td id="L46" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="46"></td>
+          <td id="LC46" class="blob-code blob-code-inner js-file-line">                <span class="pl-s1">jailbreak</span> <span class="pl-c1">=</span> <span class="pl-s1">request</span>.<span class="pl-s1">json</span>[<span class="pl-s">'jailbreak'</span>]</td>
+        </tr>
+        <tr>
+          <td id="L47" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="47"></td>
+          <td id="LC47" class="blob-code blob-code-inner js-file-line">                <span class="pl-s1">model</span> <span class="pl-c1">=</span> <span class="pl-s1">request</span>.<span class="pl-s1">json</span>[<span class="pl-s">'model'</span>]</td>
+        </tr>
+        <tr>
+          <td id="L48" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="48"></td>
+          <td id="LC48" class="blob-code blob-code-inner js-file-line">                <span class="pl-s1">messages</span> <span class="pl-c1">=</span> <span class="pl-en">build_messages</span>(<span class="pl-s1">jailbreak</span>)</td>
+        </tr>
+        <tr>
+          <td id="L49" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="49"></td>
+          <td id="LC49" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L50" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="50"></td>
+          <td id="LC50" class="blob-code blob-code-inner js-file-line">                <span class="pl-c"># Generate response</span></td>
+        </tr>
+        <tr class="shortline">
+          <td id="L51" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="51"></td>
+          <td id="LC51" class="blob-code blob-code-inner js-file-line">                <span class="pl-s1">response</span> <span class="pl-c1">=</span> <span class="pl-v">ChatCompletion</span>.<span class="pl-en">create</span>(<span class="pl-s1">model</span><span class="pl-c1">=</span><span class="pl-s1">model</span>, <span class="pl-s1">stream</span><span class="pl-c1">=</span><span class="pl-c1">True</span>,</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L52" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="52"></td>
+          <td id="LC52" class="blob-code blob-code-inner js-file-line">                                                 <span class="pl-s1">messages</span><span class="pl-c1">=</span><span class="pl-s1">messages</span>)</td>
+        </tr>
+        <tr>
+          <td id="L53" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="53"></td>
+          <td id="LC53" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L54" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="54"></td>
+          <td id="LC54" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">return</span> <span class="pl-s1">self</span>.<span class="pl-s1">app</span>.<span class="pl-en">response_class</span>(<span class="pl-en">generate_stream</span>(<span class="pl-s1">response</span>, <span class="pl-s1">jailbreak</span>), <span class="pl-s1">mimetype</span><span class="pl-c1">=</span><span class="pl-s">'text/event-stream'</span>)</td>
+        </tr>
+        <tr>
+          <td id="L55" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="55"></td>
+          <td id="LC55" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L56" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="56"></td>
+          <td id="LC56" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">except</span> <span class="pl-v">Exception</span> <span class="pl-k">as</span> <span class="pl-s1">e</span>:</td>
+        </tr>
+        <tr>
+          <td id="L57" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="57"></td>
+          <td id="LC57" class="blob-code blob-code-inner js-file-line">                <span class="pl-en">print</span>(<span class="pl-s1">e</span>)</td>
+        </tr>
+        <tr>
+          <td id="L58" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="58"></td>
+          <td id="LC58" class="blob-code blob-code-inner js-file-line">                <span class="pl-en">print</span>(<span class="pl-s1">e</span>.<span class="pl-s1">__traceback__</span>.<span class="pl-s1">tb_next</span>)</td>
+        </tr>
+        <tr>
+          <td id="L59" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="59"></td>
+          <td id="LC59" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L60" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="60"></td>
+          <td id="LC60" class="blob-code blob-code-inner js-file-line">                <span class="pl-s1">retries</span> <span class="pl-c1">+=</span> <span class="pl-c1">1</span></td>
+        </tr>
+        <tr>
+          <td id="L61" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="61"></td>
+          <td id="LC61" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> <span class="pl-s1">retries</span> <span class="pl-c1">&gt;=</span> <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=max_retries&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=60&amp;col=30&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d91f935f1e777d8d5ab5fa8a4afa729c1738db3145ceca7a9330f35445f48efc">max_retries</span></span>:</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L62" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="62"></td>
+          <td id="LC62" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">return</span> {</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L63" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="63"></td>
+          <td id="LC63" class="blob-code blob-code-inner js-file-line">                        <span class="pl-s">'_action'</span>: <span class="pl-s">'_ask'</span>,</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L64" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="64"></td>
+          <td id="LC64" class="blob-code blob-code-inner js-file-line">                        <span class="pl-s">'success'</span>: <span class="pl-c1">False</span>,</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L65" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="65"></td>
+          <td id="LC65" class="blob-code blob-code-inner js-file-line">                        <span class="pl-s">"error"</span>: <span class="pl-s">f"an error occurred <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-en">str</span>(<span class="pl-s1">e</span>)<span class="pl-kos">}</span></span>"</span></td>
+        </tr>
+        <tr class="shortline">
+          <td id="L66" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="66"></td>
+          <td id="LC66" class="blob-code blob-code-inner js-file-line">                    }, <span class="pl-c1">400</span></td>
+        </tr>
+        <tr>
+          <td id="L67" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="67"></td>
+          <td id="LC67" class="blob-code blob-code-inner js-file-line">                <span class="pl-s1">time</span>.<span class="pl-en">sleep</span>(<span class="pl-c1">3</span>)  <span class="pl-c"># Wait 3 second before trying again</span></td>
+        </tr>
+        <tr>
+          <td id="L68" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="68"></td>
+          <td id="LC68" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L69" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="69"></td>
+          <td id="LC69" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L70" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="70"></td>
+          <td id="LC70" class="blob-code blob-code-inner js-file-line"><span class="pl-k def-header">def</span> <span class="pl-en">build_messages</span>(<span class="pl-s1">jailbreak</span>):</td>
+        </tr>
+        <tr class="commentline">
+          <td id="L71" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="71"></td>
+          <td id="LC71" class="blob-code blob-code-inner js-file-line">    <span class="pl-s">"""  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L72" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="72"></td>
+          <td id="LC72" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    Build the messages for the conversation.  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L73" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="73"></td>
+          <td id="LC73" class="blob-code blob-code-inner js-file-line"><span class="pl-s"></span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L74" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="74"></td>
+          <td id="LC74" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :param jailbreak: Jailbreak instruction string  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L75" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="75"></td>
+          <td id="LC75" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :return: List of messages for the conversation  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L76" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="76"></td>
+          <td id="LC76" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    """</span></td>
+        </tr>
+        <tr>
+          <td id="L77" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="77"></td>
+          <td id="LC77" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">_conversation</span> <span class="pl-c1">=</span> <span class="pl-s1">request</span>.<span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=json&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=76&amp;col=28&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="2feebeb7eeb8f84597359574281848f9ccb3c31eb05330d96aa53e0821d9ec48">json</span></span>[<span class="pl-s">'meta'</span>][<span class="pl-s">'content'</span>][<span class="pl-s">'conversation'</span>]</td>
+        </tr>
+        <tr>
+          <td id="L78" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="78"></td>
+          <td id="LC78" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">internet_access</span> <span class="pl-c1">=</span> <span class="pl-s1">request</span>.<span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=json&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=77&amp;col=30&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="b241c86bdd48db5cad04f2747043d3d0ab8ebfa090ee1993653f11f2b9cfbaf0">json</span></span>[<span class="pl-s">'meta'</span>][<span class="pl-s">'content'</span>][<span class="pl-s">'internet_access'</span>]</td>
+        </tr>
+        <tr>
+          <td id="L79" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="79"></td>
+          <td id="LC79" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">prompt</span> <span class="pl-c1">=</span> <span class="pl-s1">request</span>.<span class="pl-s1">json</span>[<span class="pl-s">'meta'</span>][<span class="pl-s">'content'</span>][<span class="pl-s">'parts'</span>][<span class="pl-c1">0</span>]</td>
+        </tr>
+        <tr>
+          <td id="L80" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="80"></td>
+          <td id="LC80" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L81" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="81"></td>
+          <td id="LC81" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"># Generate system message</span></td>
+        </tr>
+        <tr>
+          <td id="L82" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="82"></td>
+          <td id="LC82" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">current_date</span> <span class="pl-c1">=</span> <span class="pl-s1">datetime</span>.<span class="pl-en">now</span>().<span class="pl-en"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=strftime&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=81&amp;col=34&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="bab80bf00cb2f6cb2978a2e308a2ee215384e312e7d699d788e95deb3e6bb208">strftime</span></span>(<span class="pl-s">"%Y-%m-%d"</span>)</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L83" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="83"></td>
+          <td id="LC83" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">system_message</span> <span class="pl-c1">=</span> (</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L84" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="84"></td>
+          <td id="LC84" class="blob-code blob-code-inner js-file-line">        <span class="pl-s">f'You are ChatGPT also known as ChatGPT, a large language model trained by OpenAI. '</span></td>
+        </tr>
+        <tr class="shortline">
+          <td id="L85" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="85"></td>
+          <td id="LC85" class="blob-code blob-code-inner js-file-line">        <span class="pl-s">f'Strictly follow the users instructions. '</span></td>
+        </tr>
+        <tr class="shortline">
+          <td id="L86" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="86"></td>
+          <td id="LC86" class="blob-code blob-code-inner js-file-line">        <span class="pl-s">f'Knowledge cutoff: 2021-09-01 Current date: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">current_date</span><span class="pl-kos">}</span></span>. '</span></td>
+        </tr>
+        <tr class="shortline">
+          <td id="L87" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="87"></td>
+          <td id="LC87" class="blob-code blob-code-inner js-file-line">        <span class="pl-s">f'<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-en">set_response_language</span>(<span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=prompt&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=86&amp;col=33&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="fbf57fa48321128836c4f4f91069174ab9a4f7498e069b2731e4f60d80268c09">prompt</span></span>)<span class="pl-kos">}</span></span>'</span></td>
+        </tr>
+        <tr class="shortline">
+          <td id="L88" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="88"></td>
+          <td id="LC88" class="blob-code blob-code-inner js-file-line">    )</td>
+        </tr>
+        <tr>
+          <td id="L89" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="89"></td>
+          <td id="LC89" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L90" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="90"></td>
+          <td id="LC90" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"># Initialize the conversation with the system message</span></td>
+        </tr>
+        <tr>
+          <td id="L91" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="91"></td>
+          <td id="LC91" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">conversation</span> <span class="pl-c1">=</span> [{<span class="pl-s">'role'</span>: <span class="pl-s">'system'</span>, <span class="pl-s">'content'</span>: <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=system_message&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=90&amp;col=50&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="9c26e4cc1b37d6decad556f3defdd6c06927e0bccc096cce698ed5473046e09f">system_message</span></span>}]</td>
+        </tr>
+        <tr>
+          <td id="L92" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="92"></td>
+          <td id="LC92" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L93" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="93"></td>
+          <td id="LC93" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"># Add the existing conversation</span></td>
+        </tr>
+        <tr>
+          <td id="L94" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="94"></td>
+          <td id="LC94" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">conversation</span> <span class="pl-c1">+=</span> <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=_conversation&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=93&amp;col=20&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="52097ade2a60adad9e08376447aed0c5021f9de10856d9a6792b060505e82b8a">_conversation</span></span></td>
+        </tr>
+        <tr>
+          <td id="L95" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="95"></td>
+          <td id="LC95" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L96" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="96"></td>
+          <td id="LC96" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"># Add web results if enabled</span></td>
+        </tr>
+        <tr class="shortline">
+          <td id="L97" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="97"></td>
+          <td id="LC97" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">conversation</span> <span class="pl-c1">+=</span> <span class="pl-en">fetch_search_results</span>(</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L98" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="98"></td>
+          <td id="LC98" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">prompt</span>[<span class="pl-s">"content"</span>]) <span class="pl-k">if</span> <span class="pl-s1">internet_access</span> <span class="pl-k">else</span> []</td>
+        </tr>
+        <tr>
+          <td id="L99" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="99"></td>
+          <td id="LC99" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L100" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="100"></td>
+          <td id="LC100" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"># Add jailbreak instructions if enabled</span></td>
+        </tr>
+        <tr>
+          <td id="L101" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="101"></td>
+          <td id="LC101" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> <span class="pl-s1">jailbreak_instructions</span> <span class="pl-c1">:=</span> <span class="pl-en">getJailbreak</span>(<span class="pl-s1">jailbreak</span>):</td>
+        </tr>
+        <tr>
+          <td id="L102" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="102"></td>
+          <td id="LC102" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">conversation</span> <span class="pl-c1">+=</span> <span class="pl-s1">jailbreak_instructions</span></td>
+        </tr>
+        <tr>
+          <td id="L103" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="103"></td>
+          <td id="LC103" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L104" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="104"></td>
+          <td id="LC104" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"># Add the prompt</span></td>
+        </tr>
+        <tr>
+          <td id="L105" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="105"></td>
+          <td id="LC105" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">conversation</span> <span class="pl-c1">+=</span> [<span class="pl-s1">prompt</span>]</td>
+        </tr>
+        <tr>
+          <td id="L106" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="106"></td>
+          <td id="LC106" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L107" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="107"></td>
+          <td id="LC107" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"># Reduce conversation size to avoid API Token quantity error</span></td>
+        </tr>
+        <tr>
+          <td id="L108" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="108"></td>
+          <td id="LC108" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">conversation</span> <span class="pl-c1">=</span> <span class="pl-s1">conversation</span>[<span class="pl-c1">-</span><span class="pl-c1">4</span>:] <span class="pl-k">if</span> <span class="pl-en">len</span>(<span class="pl-s1">conversation</span>) <span class="pl-c1">&gt;</span> <span class="pl-c1">3</span> <span class="pl-k">else</span> <span class="pl-s1">conversation</span></td>
+        </tr>
+        <tr>
+          <td id="L109" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="109"></td>
+          <td id="LC109" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L110" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="110"></td>
+          <td id="LC110" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=conversation&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=109&amp;col=11&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="682ec881978380fd7bfc2101246a570cfe6ff72f760ab0ff23ef7c61c62eb7f2">conversation</span></span></td>
+        </tr>
+        <tr>
+          <td id="L111" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="111"></td>
+          <td id="LC111" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L112" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="112"></td>
+          <td id="LC112" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L113" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="113"></td>
+          <td id="LC113" class="blob-code blob-code-inner js-file-line"><span class="pl-k def-header">def</span> <span class="pl-en">fetch_search_results</span>(<span class="pl-s1">query</span>):</td>
+        </tr>
+        <tr class="commentline">
+          <td id="L114" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="114"></td>
+          <td id="LC114" class="blob-code blob-code-inner js-file-line">    <span class="pl-s">"""  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L115" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="115"></td>
+          <td id="LC115" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    Fetch search results for a given query.  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L116" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="116"></td>
+          <td id="LC116" class="blob-code blob-code-inner js-file-line"><span class="pl-s"></span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L117" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="117"></td>
+          <td id="LC117" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :param query: Search query string  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L118" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="118"></td>
+          <td id="LC118" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :return: List of search results  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L119" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="119"></td>
+          <td id="LC119" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    """</span></td>
+        </tr>
+        <tr class="shortline">
+          <td id="L120" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="120"></td>
+          <td id="LC120" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">search</span> <span class="pl-c1">=</span> <span class="pl-en">get</span>(<span class="pl-s">'https://ddg-api.herokuapp.com/search'</span>,</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L121" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="121"></td>
+          <td id="LC121" class="blob-code blob-code-inner js-file-line">                 <span class="pl-s1">params</span><span class="pl-c1">=</span>{</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L122" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="122"></td>
+          <td id="LC122" class="blob-code blob-code-inner js-file-line">                     <span class="pl-s">'query'</span>: <span class="pl-s1">query</span>,</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L123" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="123"></td>
+          <td id="LC123" class="blob-code blob-code-inner js-file-line">                     <span class="pl-s">'limit'</span>: <span class="pl-c1">5</span>,</td>
+        </tr>
+        <tr class="shortline">
+          <td id="L124" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="124"></td>
+          <td id="LC124" class="blob-code blob-code-inner js-file-line">                 })</td>
+        </tr>
+        <tr>
+          <td id="L125" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="125"></td>
+          <td id="LC125" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L126" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="126"></td>
+          <td id="LC126" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">results</span> <span class="pl-c1">=</span> []</td>
+        </tr>
+        <tr>
+          <td id="L127" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="127"></td>
+          <td id="LC127" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">snippets</span> <span class="pl-c1">=</span> <span class="pl-s">""</span></td>
+        </tr>
+        <tr>
+          <td id="L128" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="128"></td>
+          <td id="LC128" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> <span class="pl-s1">index</span>, <span class="pl-s1">result</span> <span class="pl-c1">in</span> <span class="pl-en">enumerate</span><span class="b2">(</span><span class="pl-s1">search</span>.<span class="pl-en">json</span>()<span class="b2">)</span>:</td>
+        </tr>
+        <tr>
+          <td id="L129" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="129"></td>
+          <td id="LC129" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">snippet</span> <span class="pl-c1">=</span> <span class="pl-s">f'[<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">index</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">}</span></span>] "<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">result</span>[<span class="pl-s">"snippet"</span>]<span class="pl-kos">}</span></span>" URL:<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">result</span>[<span class="pl-s">"link"</span>]<span class="pl-kos">}</span></span>.'</span></td> <!-- SRJ: Interesting case: ignore brackets that are part of string, but do count brackets that are part of code -->
+        </tr>
+        <tr>
+          <td id="L130" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="130"></td>
+          <td id="LC130" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">snippets</span> <span class="pl-c1">+=</span> <span class="pl-s1">snippet</span></td>
+        </tr>
+        <tr>
+          <td id="L131" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="131"></td>
+          <td id="LC131" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">results</span>.<span class="pl-en">append</span>({<span class="pl-s">'role'</span>: <span class="pl-s">'system'</span>, <span class="pl-s">'content'</span>: <span class="pl-s1">snippets</span>})</td>
+        </tr>
+        <tr>
+          <td id="L132" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="132"></td>
+          <td id="LC132" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L133" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="133"></td>
+          <td id="LC133" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-s1">results</span></td>
+        </tr>
+        <tr>
+          <td id="L134" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="134"></td>
+          <td id="LC134" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L135" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="135"></td>
+          <td id="LC135" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L136" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="136"></td>
+          <td id="LC136" class="blob-code blob-code-inner js-file-line"><span class="pl-k def-header">def</span> <span class="pl-en">generate_stream</span>(<span class="pl-s1">response</span>, <span class="pl-s1">jailbreak</span>):</td>
+        </tr>
+        <tr class="commentline">
+          <td id="L137" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="137"></td>
+          <td id="LC137" class="blob-code blob-code-inner js-file-line">    <span class="pl-s">"""  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L138" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="138"></td>
+          <td id="LC138" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    Generate the conversation stream.  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L139" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="139"></td>
+          <td id="LC139" class="blob-code blob-code-inner js-file-line"><span class="pl-s"></span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L140" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="140"></td>
+          <td id="LC140" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :param response: Response object from ChatCompletion.create  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L141" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="141"></td>
+          <td id="LC141" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :param jailbreak: Jailbreak instruction string  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L142" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="142"></td>
+          <td id="LC142" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :return: Generator object yielding messages in the conversation  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L143" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="143"></td>
+          <td id="LC143" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    """</span></td>
+        </tr>
+        <tr>
+          <td id="L144" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="144"></td>
+          <td id="LC144" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> <span class="pl-en">getJailbreak</span>(<span class="pl-s1">jailbreak</span>):</td>
+        </tr>
+        <tr>
+          <td id="L145" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="145"></td>
+          <td id="LC145" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">response_jailbreak</span> <span class="pl-c1">=</span> <span class="pl-s">''</span></td>
+        </tr>
+        <tr>
+          <td id="L146" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="146"></td>
+          <td id="LC146" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">jailbroken_checked</span> <span class="pl-c1">=</span> <span class="pl-c1">False</span></td>
+        </tr>
+        <tr>
+          <td id="L147" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="147"></td>
+          <td id="LC147" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> <span class="pl-s1">message</span> <span class="pl-c1">in</span> <span class="pl-s1">response</span>:</td>
+        </tr>
+        <tr>
+          <td id="L148" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="148"></td>
+          <td id="LC148" class="blob-code blob-code-inner js-file-line">            <span class="pl-s1">response_jailbreak</span> <span class="pl-c1">+=</span> <span class="pl-s1">message</span></td>
+        </tr>
+        <tr>
+          <td id="L149" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="149"></td>
+          <td id="LC149" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> <span class="pl-s1">jailbroken_checked</span>:</td>
+        </tr>
+        <tr>
+          <td id="L150" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="150"></td>
+          <td id="LC150" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">yield</span> <span class="pl-s1">message</span></td>
+        </tr>
+        <tr>
+          <td id="L151" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="151"></td>
+          <td id="LC151" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+        </tr>
+        <tr>
+          <td id="L152" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="152"></td>
+          <td id="LC152" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> <span class="pl-en">response_jailbroken_success</span>(<span class="pl-s1">response_jailbreak</span>):</td>
+        </tr>
+        <tr>
+          <td id="L153" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="153"></td>
+          <td id="LC153" class="blob-code blob-code-inner js-file-line">                    <span class="pl-s1">jailbroken_checked</span> <span class="pl-c1">=</span> <span class="pl-c1">True</span></td>
+        </tr>
+        <tr>
+          <td id="L154" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="154"></td>
+          <td id="LC154" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> <span class="pl-en">response_jailbroken_failed</span>(<span class="pl-s1">response_jailbreak</span>):</td>
+        </tr>
+        <tr>
+          <td id="L155" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="155"></td>
+          <td id="LC155" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">yield</span> <span class="pl-s1">response_jailbreak</span></td>
+        </tr>
+        <tr>
+          <td id="L156" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="156"></td>
+          <td id="LC156" class="blob-code blob-code-inner js-file-line">                    <span class="pl-s1">jailbroken_checked</span> <span class="pl-c1">=</span> <span class="pl-c1">True</span></td>
+        </tr>
+        <tr>
+          <td id="L157" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="157"></td>
+          <td id="LC157" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">else</span>:</td>
+        </tr>
+        <tr>
+          <td id="L158" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="158"></td>
+          <td id="LC158" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">yield</span> <span class="pl-k">from</span> <span class="pl-s1">response</span></td>
+        </tr>
+        <tr>
+          <td id="L159" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="159"></td>
+          <td id="LC159" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L160" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="160"></td>
+          <td id="LC160" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L161" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="161"></td>
+          <td id="LC161" class="blob-code blob-code-inner js-file-line"><span class="pl-k def-header">def</span> <span class="pl-en">response_jailbroken_success</span>(<span class="pl-s1">response</span>: <span class="pl-s1">str</span>) <span class="pl-c1">-&gt;</span> <span class="pl-s1">bool</span>:</td>
+        </tr>
+        <tr class="commentline">
+          <td id="L162" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="162"></td>
+          <td id="LC162" class="blob-code blob-code-inner js-file-line">    <span class="pl-s">"""Check if the response has been jailbroken.</span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L163" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="163"></td>
+          <td id="LC163" class="blob-code blob-code-inner js-file-line"><span class="pl-s"></span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L164" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="164"></td>
+          <td id="LC164" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :param response: Response string</span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L165" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="165"></td>
+          <td id="LC165" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :return: Boolean indicating if the response has been jailbroken</span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L166" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="166"></td>
+          <td id="LC166" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    """</span></td>
+        </tr>
+        <tr>
+          <td id="L167" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="167"></td>
+          <td id="LC167" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">act_match</span> <span class="pl-c1">=</span> <span class="pl-s1">re</span>.<span class="pl-en">search</span>(<span class="pl-s">r'ACT:'</span>, <span class="pl-s1">response</span>, <span class="pl-s1">flags</span><span class="pl-c1">=</span><span class="pl-s1">re</span>.<span class="pl-v">DOTALL</span>)</td>
+        </tr>
+        <tr>
+          <td id="L168" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="168"></td>
+          <td id="LC168" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-en">bool</span>(<span class="pl-s1">act_match</span>)</td>
+        </tr>
+        <tr>
+          <td id="L169" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="169"></td>
+          <td id="LC169" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L170" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="170"></td>
+          <td id="LC170" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L171" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="171"></td>
+          <td id="LC171" class="blob-code blob-code-inner js-file-line"><span class="pl-k def-header">def</span> <span class="pl-en">response_jailbroken_failed</span>(<span class="pl-s1">response</span>):</td>
+        </tr>
+        <tr class="commentline">
+          <td id="L172" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="172"></td>
+          <td id="LC172" class="blob-code blob-code-inner js-file-line">    <span class="pl-s">"""  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L173" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="173"></td>
+          <td id="LC173" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    Check if the response has not been jailbroken.  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L174" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="174"></td>
+          <td id="LC174" class="blob-code blob-code-inner js-file-line"><span class="pl-s"></span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L175" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="175"></td>
+          <td id="LC175" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :param response: Response string  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L176" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="176"></td>
+          <td id="LC176" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :return: Boolean indicating if the response has not been jailbroken  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L177" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="177"></td>
+          <td id="LC177" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    """</span></td>
+        </tr>
+        <tr>
+          <td id="L178" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="178"></td>
+          <td id="LC178" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-c1">False</span> <span class="pl-k">if</span> <span class="pl-en">len</span>(<span class="pl-s1">response</span>) <span class="pl-c1">&lt;</span> <span class="pl-c1">4</span> <span class="pl-k">else</span> <span class="pl-c1"></span> <span class="b2">(</span><span class="pl-s1">response</span>.<span class="pl-en"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=startswith&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=177&amp;col=57&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="dedaea1c8a5a1004fe29f5ae4b3e104dccea237936b3eb9fe8a4a57c86078238">startswith</span></span>(<span class="pl-s">"GPT:"</span>) <span class="pl-c1">or</span> <span class="pl-s1">response</span>.<span class="pl-en">startswith</span>(<span class="pl-s">"ACT:"</span>)<span class="b2">)</span></td>
+        </tr>
+        <tr>
+          <td id="L179" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="179"></td>
+          <td id="LC179" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L180" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="180"></td>
+          <td id="LC180" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L181" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="181"></td>
+          <td id="LC181" class="blob-code blob-code-inner js-file-line"><span class="pl-k def-header">def</span> <span class="pl-en">set_response_language</span>(<span class="pl-s1">prompt</span>):</td>
+        </tr>
+        <tr class="commentline">
+          <td id="L182" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="182"></td>
+          <td id="LC182" class="blob-code blob-code-inner js-file-line">    <span class="pl-s">"""  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L183" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="183"></td>
+          <td id="LC183" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    Set the response language based on the prompt content.  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L184" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="184"></td>
+          <td id="LC184" class="blob-code blob-code-inner js-file-line"><span class="pl-s"></span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L185" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="185"></td>
+          <td id="LC185" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :param prompt: Prompt dictionary  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L186" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="186"></td>
+          <td id="LC186" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :return: String indicating the language to be used for the response  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L187" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="187"></td>
+          <td id="LC187" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    """</span></td>
+        </tr>
+        <tr>
+          <td id="L188" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="188"></td>
+          <td id="LC188" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">translator</span> <span class="pl-c1">=</span> <span class="pl-v">Translator</span>()</td>
+        </tr>
+        <tr>
+          <td id="L189" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="189"></td>
+          <td id="LC189" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">detected_language</span> <span class="pl-c1">=</span> <span class="pl-s1">translator</span>.<span class="pl-en">detect</span><span class="b2">(</span><span class="pl-s1">prompt</span>[<span class="pl-s">'content'</span>]<span class="b2">)</span>.<span class="pl-s1">lang</span></td>
+        </tr>
+        <tr>
+          <td id="L190" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="190"></td>
+          <td id="LC190" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-s">f"You will respond in the language: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">detected_language</span><span class="pl-kos">}</span></span>. "</span></td>
+        </tr>
+        <tr>
+          <td id="L191" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="191"></td>
+          <td id="LC191" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L192" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="192"></td>
+          <td id="LC192" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L193" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="193"></td>
+          <td id="LC193" class="blob-code blob-code-inner js-file-line"><span class="pl-k def-header">def</span> <span class="pl-en">getJailbreak</span>(<span class="pl-s1">jailbreak</span>):</td>
+        </tr>
+        <tr class="commentline">
+          <td id="L194" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="194"></td>
+          <td id="LC194" class="blob-code blob-code-inner js-file-line">    <span class="pl-s">"""  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L195" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="195"></td>
+          <td id="LC195" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    Check if jailbreak instructions are provided.  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L196" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="196"></td>
+          <td id="LC196" class="blob-code blob-code-inner js-file-line"><span class="pl-s"></span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L197" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="197"></td>
+          <td id="LC197" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :param jailbreak: Jailbreak instruction string  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L198" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="198"></td>
+          <td id="LC198" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    :return: Jailbreak instructions if provided, otherwise None  </span></td>
+        </tr>
+        <tr class="commentline">
+          <td id="L199" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="199"></td>
+          <td id="LC199" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    """</span></td>
+        </tr>
+        <tr>
+          <td id="L200" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="200"></td>
+          <td id="LC200" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> <span class="pl-s1">jailbreak</span> <span class="pl-c1">!=</span> <span class="pl-s">"default"</span>:</td>
+        </tr>
+        <tr>
+          <td id="L201" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="201"></td>
+          <td id="LC201" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">special_instructions</span>[<span class="pl-s1">jailbreak</span>][<span class="pl-c1">0</span>][<span class="pl-s">'content'</span>] <span class="pl-c1">+=</span> <span class="pl-s1">special_instructions</span>[<span class="pl-s">'two_responses_instruction'</span>]</td>
+        </tr>
+        <tr>
+          <td id="L202" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="202"></td>
+          <td id="LC202" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> <span class="pl-s1">jailbreak</span> <span class="pl-c1">in</span> <span class="pl-s1">special_instructions</span>:</td>
+        </tr>
+        <tr>
+          <td id="L203" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="203"></td>
+          <td id="LC203" class="blob-code blob-code-inner js-file-line">            <span class="pl-s1">special_instructions</span>[<span class="pl-s1">jailbreak</span>]</td>
+        </tr>
+        <tr>
+          <td id="L204" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="204"></td>
+          <td id="LC204" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">return</span> <span class="pl-s1">special_instructions</span>[<span class="pl-s1">jailbreak</span>]</td>
+        </tr>
+        <tr>
+          <td id="L205" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="205"></td>
+          <td id="LC205" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">else</span>:</td>
+        </tr>
+        <tr>
+          <td id="L206" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="206"></td>
+          <td id="LC206" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">return</span> <span class="pl-c1">None</span></td>
+        </tr>
+        <tr>
+          <td id="L207" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="207"></td>
+          <td id="LC207" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">else</span>:</td>
+        </tr>
+        <tr>
+          <td id="L208" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="208"></td>
+          <td id="LC208" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">None</span></td>
+        </tr>
+  </tbody></table>
+</div>
+
+  <details class="details-reset details-overlay BlobToolbar position-absolute js-file-line-actions dropdown d-none" aria-hidden="true">
+    <summary class="btn-octicon ml-0 px-2 p-0 color-bg-default border color-border-default rounded-2" aria-label="Inline file action toolbar" aria-haspopup="menu" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal">
+    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+</svg>
+    </summary>
+    <details-menu role="menu" data-focus-trap="active"><span class="sentinel" tabindex="0" aria-hidden="true"></span>
+
+      <ul class="BlobToolbar-dropdown dropdown-menu dropdown-menu-se ml-2 mt-2" style="width:185px">
+        <li>
+          <clipboard-copy role="menuitem" class="dropdown-item" id="js-copy-lines" style="cursor:pointer;" aria-label="Copy lines" tabindex="0">
+            Copy lines
+          </clipboard-copy>
+        </li>
+        <li>
+          <clipboard-copy role="menuitem" class="dropdown-item" id="js-copy-permalink" style="cursor:pointer;" aria-label="Copy permalink" tabindex="0">
+            Copy permalink
+          </clipboard-copy>
+        </li>
+        <li><a class="dropdown-item js-update-url-with-hash" id="js-view-git-blame" role="menuitem" href="https://github.com/ramonvc/freegpt-webui/blame/8071fe37707a7560228d7db9c4e72f5c0bb80bca/server/backend.py">View git blame</a></li>
+          <li><a class="dropdown-item" id="js-new-issue" role="menuitem" href="https://github.com/ramonvc/freegpt-webui/issues/new">Reference in new issue</a></li>
+      </ul>
+    <span class="sentinel" tabindex="0" aria-hidden="true"></span></details-menu>
+  </details>
+
+    </div>
+
+    </div>
+
+
+
+
+  <details class="details-reset details-overlay details-overlay-dark" id="jumpto-line-details-dialog">
+    <summary data-hotkey="l" aria-label="Jump to line" role="button"></summary>
+    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast linejump overflow-hidden" aria-label="Jump to line" role="dialog" aria-modal="true">
+      <!-- '"` --><!-- </textarea></xmp> --><form class="js-jump-to-line-form Box-body d-flex" data-turbo="false" action="https://github.com/ramonvc/freegpt-webui/blob/main/server/backend.py" accept-charset="UTF-8" method="get">
+        <input class="form-control flex-auto mr-3 linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line…" aria-label="Jump to line" autofocus="">
+          <button data-close-dialog="" type="submit" data-view-component="true" class="btn">    Go
+</button>
+</form>    </details-dialog>
+  </details>
+
+    <div class="Popover anim-scale-in js-tagsearch-popover" data-tagsearch-url="/ramonvc/freegpt-webui/find-definition" data-tagsearch-ref="main" data-tagsearch-code-nav-context="BLOB_VIEW" style="position: absolute; z-index: 3; top: 681px; left: 136.359px;" hidden="">
+  <div class="Popover-message Popover-message--large Popover-message--top-left TagsearchPopover mt-1 mb-4 mx-auto Box color-shadow-large">
+    <div class="TagsearchPopover-content js-tagsearch-popover-content overflow-auto" style="will-change:transform;">
+<div class="Details js-details-container" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=Backend_Api&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=12&amp;col=6&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="144699a7de9d14ec8f027fa84599e36549667d8a87fe0d7617482d79c84b19b9">
+  <div class="Details-content--shown position-relative">
+    <div class="UnderlineNav pl-2 top-0 color-bg-default" style="position: sticky; position: -webkit-sticky; position: -moz-sticky; z-index: 2;">
+  <div class="UnderlineNav-body">
+    <button name="definitions" type="button" aria-expanded="true" class="btn-link border-left-0 border-right-0 border-top-0 UnderlineNav-item text-small px-2 py-1 mr-1 selected js-tagsearch-nav-item" style="padding-top: 10px !important" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_definitions&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_definitions&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=Backend_Api&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=12&amp;col=6&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="0cc946a0b2e30498b25ec9ba968611ef1cec7465bdc17bf49ef1227498cca712">Definition</button>
+    <button name="references" type="button" aria-expanded="false" class="btn-link border-left-0 border-right-0 border-top-0 UnderlineNav-item text-small px-2 py-1 mr-1 js-details-target js-tagsearch-nav-item" style="padding-top: 10px !important" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_references&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_references&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=Backend_Api&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=12&amp;col=6&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="7e204f1dcdc46ed4dd0e52392bdc6ebac175aea05ddd3fb71db25a520eaaeeb1">References</button>
+  </div>
+</div>
+
+      <div class="flex-auto d-flex flex-justify-between f6 px-3 py-1 text-small color-bg-subtle">
+
+
+          <span class="text-bold v-align-middle">
+            This is the definition
+          </span>
+
+  </div>
+
+    <ul class="TagsearchPopover-list border-top">
+
+<li class="TagsearchPopover-list-item py-1 d-flex">
+  <a class="TagsearchPopover-item" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_definition&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=Backend_Api&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=12&amp;col=6&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="febac5459dd8730af3e0420cd00d200e42c6ad03fdcd094a21f19f66e635f20f" href="https://github.com/ramonvc/freegpt-webui/blob/8071fe37707a7560228d7db9c4e72f5c0bb80bca/server/backend.py#L13">
+    <div class="d-flex">
+      <div class="text-small blob-num color-fg-muted">13</div>
+      <div class="blob-code blob-code-inner"><span class="pl-k">class</span> <span class="pl-v">Backend_Api</span>:</div>
+    </div>
+</a></li>
+
+    </ul>
+    <div class="flex-auto d-flex flex-justify-between f6 px-3 py-1 text-small color-bg-subtle js-code-nav-retry" data-code-nav-kind="definitions" data-code-nav-url="/ramonvc/freegpt-webui/find-definition?backend=search-based&amp;blob_path=server%2Fbackend.py&amp;code_nav_context=BLOB_VIEW&amp;col=6&amp;language=Python&amp;q=Backend_Api&amp;ref=main&amp;row=12">
+  <span class="v-align-middle">
+    Viewing <span class="text-bold">precise</span> results. Try a
+    <span data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.retry_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;retry_definition&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;ALEPH_FUZZY&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=Backend_Api&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=12&amp;col=6&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d5d41182d11b3f5b5155692090fbea4fef33dfb558fb71465ef8b8a816faf72b" data-view-component="true" class="Link">search-based</span> lookup.
+      <a href="https://docs.github.com/en/repositories/working-with-files/using-files/navigating-code-on-github#precise-and-search-based-navigation" data-view-component="true">Learn more.</a>
+  </span>
+</div>
+
+
+  </div>
+
+  <div class="Details-content--hidden">
+    <div class="UnderlineNav pl-2 top-0 color-bg-default" style="position: sticky; position: -webkit-sticky; position: -moz-sticky; z-index: 2;">
+  <div class="UnderlineNav-body">
+    <button name="definitions" type="button" aria-expanded="false" class="btn-link border-left-0 border-right-0 border-top-0 UnderlineNav-item text-small px-2 py-1 mr-1 js-details-target js-tagsearch-nav-item" style="padding-top: 10px !important" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_definitions&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_definitions&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=Backend_Api&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=12&amp;col=6&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="0cc946a0b2e30498b25ec9ba968611ef1cec7465bdc17bf49ef1227498cca712">Definition</button>
+    <button name="references" type="button" aria-expanded="true" class="btn-link border-left-0 border-right-0 border-top-0 UnderlineNav-item text-small px-2 py-1 mr-1 selected js-tagsearch-nav-item" style="padding-top: 10px !important" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_references&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_references&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=Backend_Api&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=12&amp;col=6&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="7e204f1dcdc46ed4dd0e52392bdc6ebac175aea05ddd3fb71db25a520eaaeeb1">References</button>
+  </div>
+</div>
+
+    <div class="position-relative js-code-nav-references">
+
+  <div class="d-flex flex-justify-between f6 px-3 py-1 text-small color-bg-subtle">
+    <div class="flex-auto color-fg-muted">
+      Found
+      <span class="color-fg-default text-bold">
+        2 references
+      </span>
+      in
+      <span class="color-fg-default text-bold">
+        1 file
+      </span>
+    </div>
+
+  </div>
+
+    <div class="d-flex f6 px-3 py-1 border-top color-bg-default" style="position: sticky; top: 34px; z-index: 1;">
+      <span class="flex-auto text-bold css-truncate css-truncate-target" title="run.py" style="max-width: 100% !important;">run.py</span>
+    </div>
+    <ul class="TagsearchPopover-list">
+
+<li class="TagsearchPopover-list-item py-1 d-flex">
+  <a class="TagsearchPopover-item" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_reference&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_reference&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-references?blob_path=server%2Fbackend.py&amp;code_nav_context=BLOB_VIEW&amp;col=6&amp;language=Python&amp;q=Backend_Api&amp;ref=main&amp;row=12&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="98ecab579fbd138e8ffe75ce425aaf492c166dbc828711a1fb7b825581e2d8c1" href="https://github.com/ramonvc/freegpt-webui/blob/8071fe37707a7560228d7db9c4e72f5c0bb80bca/run.py#L3">
+    <div class="d-flex">
+      <div class="text-small blob-num color-fg-muted">3</div>
+      <div class="blob-code blob-code-inner"><span class="pl-k">from</span> <span class="pl-s1">server</span>.<span class="pl-s1">backend</span> <span class="pl-k">import</span> <span class="pl-v">Backend_Api</span></div>
+    </div>
+</a></li>
+
+<li class="TagsearchPopover-list-item py-1 d-flex">
+  <a class="TagsearchPopover-item" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_reference&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_reference&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-references?blob_path=server%2Fbackend.py&amp;code_nav_context=BLOB_VIEW&amp;col=6&amp;language=Python&amp;q=Backend_Api&amp;ref=main&amp;row=12&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="98ecab579fbd138e8ffe75ce425aaf492c166dbc828711a1fb7b825581e2d8c1" href="https://github.com/ramonvc/freegpt-webui/blob/8071fe37707a7560228d7db9c4e72f5c0bb80bca/run.py#L23">
+    <div class="d-flex">
+      <div class="text-small blob-num color-fg-muted">23</div>
+      <div class="blob-code blob-code-inner"><span class="pl-s1">backend_api</span> <span class="pl-c1">=</span> <span class="pl-v">Backend_Api</span>(<span class="pl-s1">app</span>, <span class="pl-s1">config</span>)</div>
+    </div>
+</a></li>
+
+    </ul>
+    <div class="flex-auto d-flex flex-justify-between f6 px-3 py-1 text-small color-bg-subtle js-code-nav-retry" data-code-nav-kind="references" data-code-nav-url="/ramonvc/freegpt-webui/find-references?backend=search-based&amp;blob_path=server%2Fbackend.py&amp;col=6&amp;language=Python&amp;q=Backend_Api&amp;ref=main&amp;row=12">
+  <span class="v-align-middle">
+    Viewing <span class="text-bold">precise</span> results. Try a
+    <span data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.retry_references&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;retry_references&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;ALEPH_FUZZY&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-references?blob_path=server%2Fbackend.py&amp;code_nav_context=BLOB_VIEW&amp;col=6&amp;language=Python&amp;q=Backend_Api&amp;ref=main&amp;row=12&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="fd1ed731d124d57b706304e6d27235197f9e9d92314ac5d3ea64c75955aa22df" data-view-component="true" class="Link">search-based</span> lookup.
+      <a href="https://docs.github.com/en/repositories/working-with-files/using-files/navigating-code-on-github#precise-and-search-based-navigation" data-view-component="true">Learn more.</a>
+  </span>
+</div>
+
+
+    </div>
+  </div>
+<div>
+</div></div></div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </div>
+
+  </turbo-frame>
+
+
+    </main>
+  </div>
+
+  </div>
+
+
+
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error" hidden="">
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+    </button>
+    You can’t perform that action at this time.
+  </div>
+
+    <template id="site-details-dialog"></template>
+
+    <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
+  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box color-shadow-large" style="width:360px;"></div>
+</div>
+
+    <template id="snippet-clipboard-copy-button"></template>
+<template id="snippet-clipboard-copy-button-unpositioned"></template>
+
+
+
+
+    </div>
+
+    <div id="js-global-screen-reader-notice" class="sr-only" aria-live="polite">freegpt-webui/server/backend.py at main · ramonvc/freegpt-webui · GitHub</div>
+
+
+</body>
+
+
+
+  </html>
