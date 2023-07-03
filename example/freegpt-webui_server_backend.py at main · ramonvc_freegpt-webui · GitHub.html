@@ -556,11 +556,11 @@
         </tr>
         <tr class="shortline">
           <td id="L51" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="51"></td>
-          <td id="LC51" class="blob-code blob-code-inner js-file-line">                <span class="pl-s1">response</span> <span class="pl-c1">=</span> <span class="pl-v">ChatCompletion</span>.<span class="pl-en">create</span>(<span class="pl-s1">model</span><span class="pl-c1">=</span><span class="pl-s1">model</span>, <span class="pl-s1">stream</span><span class="pl-c1">=</span><span class="pl-c1">True</span>,</td>
+          <td id="LC51" class="blob-code blob-code-inner js-file-line">                <span class="pl-s1">response</span> <span class="pl-c1">=</span> <span class="pl-v">ChatCompletion</span>.<span class="pl-en">create</span><span class="incline-bracket">(</span><span class="pl-s1">model</span><span class="pl-c1">=</span><span class="pl-s1">model</span>, <span class="pl-s1">stream</span><span class="pl-c1">=</span><span class="pl-c1">True</span>,</td>
         </tr>
         <tr class="shortline">
           <td id="L52" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="52"></td>
-          <td id="LC52" class="blob-code blob-code-inner js-file-line">                                                 <span class="pl-s1">messages</span><span class="pl-c1">=</span><span class="pl-s1">messages</span>)</td>
+          <td id="LC52" class="blob-code blob-code-inner js-file-line">                                                 <span class="pl-s1">messages</span><span class="pl-c1">=</span><span class="pl-s1">messages</span><span class="incline-bracket">)</span></td>
         </tr>
         <tr>
           <td id="L53" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="53"></td>
@@ -569,7 +569,7 @@
         </tr>
         <tr>
           <td id="L54" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="54"></td>
-          <td id="LC54" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">return</span> <span class="pl-s1">self</span>.<span class="pl-s1">app</span>.<span class="pl-en">response_class</span>(<span class="pl-en">generate_stream</span>(<span class="pl-s1">response</span>, <span class="pl-s1">jailbreak</span>), <span class="pl-s1">mimetype</span><span class="pl-c1">=</span><span class="pl-s">'text/event-stream'</span>)</td>
+          <td id="LC54" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">return</span> <span class="pl-s1">self</span>.<span class="pl-s1">app</span>.<span class="pl-en">response_class</span><span class="b2">(</span><span class="pl-en">generate_stream</span>(<span class="pl-s1">response</span>, <span class="pl-s1">jailbreak</span>), <span class="pl-s1">mimetype</span><span class="pl-c1">=</span><span class="pl-s">'text/event-stream'</span><span class="b2">)</span></td>
         </tr>
         <tr>
           <td id="L55" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="55"></td>
@@ -690,7 +690,7 @@
         </tr>
         <tr class="shortline">
           <td id="L83" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="83"></td>
-          <td id="LC83" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">system_message</span> <span class="pl-c1">=</span> (</td>
+          <td id="LC83" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">system_message</span> <span class="pl-c1">=</span> <span class="b2 incline-bracket">(</span></td>
         </tr>
         <tr class="shortline">
           <td id="L84" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="84"></td>
@@ -706,11 +706,11 @@
         </tr>
         <tr class="shortline">
           <td id="L87" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="87"></td>
-          <td id="LC87" class="blob-code blob-code-inner js-file-line">        <span class="pl-s">f'<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-en">set_response_language</span>(<span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=prompt&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=86&amp;col=33&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="fbf57fa48321128836c4f4f91069174ab9a4f7498e069b2731e4f60d80268c09">prompt</span></span>)<span class="pl-kos">}</span></span>'</span></td>
+          <td id="LC87" class="blob-code blob-code-inner js-file-line">        <span class="pl-s">f'<span class="pl-s1"><span class="pl-ko b2">{</span><span class="pl-en">set_response_language</span>(<span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=prompt&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=86&amp;col=33&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="fbf57fa48321128836c4f4f91069174ab9a4f7498e069b2731e4f60d80268c09">prompt</span></span>)<span class="pl-kos b2">}</span></span>'</span></td>
         </tr>
         <tr class="shortline">
           <td id="L88" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="88"></td>
-          <td id="LC88" class="blob-code blob-code-inner js-file-line">    )</td>
+          <td id="LC88" class="blob-code blob-code-inner js-file-line">    <span class="b2 incline-bracket">)</span></td>
         </tr>
         <tr>
           <td id="L89" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="89"></td>
@@ -723,7 +723,7 @@
         </tr>
         <tr>
           <td id="L91" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="91"></td>
-          <td id="LC91" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">conversation</span> <span class="pl-c1">=</span> [{<span class="pl-s">'role'</span>: <span class="pl-s">'system'</span>, <span class="pl-s">'content'</span>: <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=system_message&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=90&amp;col=50&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="9c26e4cc1b37d6decad556f3defdd6c06927e0bccc096cce698ed5473046e09f">system_message</span></span>}]</td>
+          <td id="LC91" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">conversation</span> <span class="pl-c1">=</span> <span class="b2">[</span>{<span class="pl-s">'role'</span>: <span class="pl-s">'system'</span>, <span class="pl-s">'content'</span>: <span class="pl-s1"><span class="pl-token" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:649154175,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_PRECISE&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_ENABLED&quot;,&quot;in_repo_result_count&quot;:1,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ramonvc/freegpt-webui/find-definition?q=system_message&amp;blob_path=server%2Fbackend.py&amp;ref=main&amp;language=Python&amp;row=90&amp;col=50&amp;code_nav_context=BLOB_VIEW&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="9c26e4cc1b37d6decad556f3defdd6c06927e0bccc096cce698ed5473046e09f">system_message</span></span>}<span class="b2">]</span></td>
         </tr>
         <tr>
           <td id="L92" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="92"></td>
@@ -749,11 +749,11 @@
         </tr>
         <tr class="shortline">
           <td id="L97" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="97"></td>
-          <td id="LC97" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">conversation</span> <span class="pl-c1">+=</span> <span class="pl-en">fetch_search_results</span>(</td>
+          <td id="LC97" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">conversation</span> <span class="pl-c1">+=</span> <span class="pl-en">fetch_search_results</span><span class="b2 incline-bracket">(</span></td>
         </tr>
         <tr class="shortline">
           <td id="L98" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="98"></td>
-          <td id="LC98" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">prompt</span>[<span class="pl-s">"content"</span>]) <span class="pl-k">if</span> <span class="pl-s1">internet_access</span> <span class="pl-k">else</span> []</td>
+          <td id="LC98" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">prompt</span>[<span class="pl-s">"content"</span>]<span class="b2 incline-bracket">)</span> <span class="pl-k">if</span> <span class="pl-s1">internet_access</span> <span class="pl-k">else</span> []</td>
         </tr>
         <tr>
           <td id="L99" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="99"></td>
@@ -847,11 +847,11 @@
         </tr>
         <tr class="shortline">
           <td id="L120" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="120"></td>
-          <td id="LC120" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">search</span> <span class="pl-c1">=</span> <span class="pl-en">get</span>(<span class="pl-s">'https://ddg-api.herokuapp.com/search'</span>,</td>
+          <td id="LC120" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">search</span> <span class="pl-c1">=</span> <span class="pl-en">get</span><span class="b2 incline-bracket">(</span><span class="pl-s">'https://ddg-api.herokuapp.com/search'</span>,</td>
         </tr>
         <tr class="shortline">
           <td id="L121" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="121"></td>
-          <td id="LC121" class="blob-code blob-code-inner js-file-line">                 <span class="pl-s1">params</span><span class="pl-c1">=</span>{</td>
+          <td id="LC121" class="blob-code blob-code-inner js-file-line">                 <span class="pl-s1">params</span><span class="pl-c1">=</span><span class="incline-bracket">{</span></td>
         </tr>
         <tr class="shortline">
           <td id="L122" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="122"></td>
@@ -863,7 +863,7 @@
         </tr>
         <tr class="shortline">
           <td id="L124" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="124"></td>
-          <td id="LC124" class="blob-code blob-code-inner js-file-line">                 })</td>
+          <td id="LC124" class="blob-code blob-code-inner js-file-line">                 <span class="incline-bracket">}</span><span class="b2 incline-bracket">)</span></td>
         </tr>
         <tr>
           <td id="L125" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="125"></td>
@@ -884,7 +884,7 @@
         </tr>
         <tr>
           <td id="L129" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="129"></td>
-          <td id="LC129" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">snippet</span> <span class="pl-c1">=</span> <span class="pl-s">f'[<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">index</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">}</span></span>] "<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">result</span>[<span class="pl-s">"snippet"</span>]<span class="pl-kos">}</span></span>" URL:<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">result</span>[<span class="pl-s">"link"</span>]<span class="pl-kos">}</span></span>.'</span></td> <!-- SRJ: Interesting case: ignore brackets that are part of string, but do count brackets that are part of code -->
+          <td id="LC129" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">snippet</span> <span class="pl-c1">=</span> <span class="pl-s">f'[<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">index</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">}</span></span>] "<span class="pl-s1"><span class="pl-kos"><span class="b2">{</span></span><span class="pl-s1">result</span>[<span class="pl-s">"snippet"</span>]<span class="pl-kos b2">}</span></span>" URL:<span class="pl-s1"><span class="pl-kos b2">{</span><span class="pl-s1">result</span>[<span class="pl-s">"link"</span>]<span class="pl-kos b2">}</span></span>.'</span></td> <!-- SRJ: Interesting case: ignore brackets that are part of string, but do count brackets that are part of code -->
         </tr>
         <tr>
           <td id="L130" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="130"></td>
@@ -892,7 +892,7 @@
         </tr>
         <tr>
           <td id="L131" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="131"></td>
-          <td id="LC131" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">results</span>.<span class="pl-en">append</span>({<span class="pl-s">'role'</span>: <span class="pl-s">'system'</span>, <span class="pl-s">'content'</span>: <span class="pl-s1">snippets</span>})</td>
+          <td id="LC131" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">results</span>.<span class="pl-en">append</span><span class="b3">(</span><span class="b2">{</span><span class="pl-s">'role'</span>: <span class="pl-s">'system'</span>, <span class="pl-s">'content'</span>: <span class="pl-s1">snippets</span>, <span class="pl-s">'foo'</span>: <span class="pl-s1">buzz(index)</span><span class="b2">}</span>, x<span class="b3">)</span></td>
         </tr>
         <tr>
           <td id="L132" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="132"></td>

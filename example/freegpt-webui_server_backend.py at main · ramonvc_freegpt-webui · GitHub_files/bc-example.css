@@ -36,16 +36,6 @@
   font-size: 48px;
 }
 
-/* inclined parenthesis */
-.incline-bracket {
-  transform: rotate(15deg) scale(1.25,1.25);
-  display: inline-block;
-}
-
-.decline-bracket {
-  transform: rotate(-15deg) scale(1.25,1.25);
-  display: inline-block;
-}
 
 /* Line Height */
 
@@ -93,6 +83,24 @@ td:has(.def-header) {
 /* Brackets */
 
 .b2 {
-    transform: scale(1.0, 1.6);
+    transform: scale(1.0, 1.4);
     display: inline-block;
+}
+
+.b3 {
+    transform: scale(1.0, 1.8);
+    display: inline-block;
+}
+
+/* inclined parenthesis */
+.incline-bracket {
+/*  transform: rotate(15deg) scale(1.25,1.25);*/
+/*  display: inline-block;*/
+  font-style: italic;
+}
+
+.decline-bracket {
+/*  transform: rotate(-15deg) scale(1.25,1.25);*/
+/*  display: inline-block;*/
+  font-style: italic;
 }
