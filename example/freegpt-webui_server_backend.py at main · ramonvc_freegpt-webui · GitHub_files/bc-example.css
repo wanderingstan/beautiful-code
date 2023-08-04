@@ -24,7 +24,10 @@
 }
 */
 
+
 @import url("https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css");
+
+
 
 /* Headlines */
 
@@ -57,7 +60,7 @@ tr.shortline td {
   /* letter-spacing: -0.1rem; */
 /*  font-family: "Palatino", "URW Palladio L";*/
 /*  font-style: italic;*/
-  font-family: "Computer Modern";
+  font-family: "Computer Modern Serif";
 /*  font-weight: 500;*/
 }
 
@@ -67,7 +70,7 @@ tr.shortline td {
   /* letter-spacing: -0.1rem; */
 /*  font-family: "Palatino", "URW Palladio L";*/
 /*  font-style: italic;*/
-  font-family: "Computer Modern";
+  font-family: "Computer Modern Serif";
   font-weight: 500;
 }
 
