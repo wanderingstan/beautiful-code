@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/beautiful-code/static/css/main.8671fce3.css",
+    "main.js": "/beautiful-code/static/js/main.6844979e.js",
+    "static/js/453.26373734.chunk.js": "/beautiful-code/static/js/453.26373734.chunk.js",
+    "index.html": "/beautiful-code/index.html",
+    "main.8671fce3.css.map": "/beautiful-code/static/css/main.8671fce3.css.map",
+    "main.6844979e.js.map": "/beautiful-code/static/js/main.6844979e.js.map",
+    "453.26373734.chunk.js.map": "/beautiful-code/static/js/453.26373734.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8671fce3.css",
+    "static/js/main.6844979e.js"
+  ]
+}
