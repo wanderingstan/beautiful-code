@@ -1,0 +1,126 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.App.dark {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.App.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.App-header {
+  padding: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.App.light .App-header {
+  border-bottom: 1px solid #ddd;
+}
+
+.App-header h1 {
+  margin: 0 0 20px 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.theme-toggle {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007acc;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #005a9e;
+}
+
+.App.light .theme-toggle {
+  background-color: #0066cc;
+}
+
+.App.light .theme-toggle:hover {
+  background-color: #0052a3;
+}
+
+.language-select {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007acc;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.language-select:hover {
+  background-color: #005a9e;
+}
+
+.language-select:focus {
+  outline: none;
+  background-color: #005a9e;
+}
+
+.App.light .language-select {
+  background-color: #0066cc;
+  color: white;
+}
+
+.App.light .language-select:hover,
+.App.light .language-select:focus {
+  background-color: #0052a3;
+}
+
+.language-select option {
+  background-color: #007acc;
+  color: white;
+}
+
+.App.light .language-select option {
+  background-color: #0066cc;
+  color: white;
+}
+
+.App-main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.editor-container {
+  text-align: left;
+}
+
+.editor-container h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.code-editor {
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.App.light .code-editor {
+  border: 1px solid #ddd;
+}
